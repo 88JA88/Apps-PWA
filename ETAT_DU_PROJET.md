@@ -11,6 +11,7 @@
 - Dépôt Git local indépendant initialisé le 27 août 2026.
 - Branche actuelle : `main`.
 - Le premier commit local regroupe les 12 fichiers contrôlés du dépôt et de « JA — Réseau PERT ».
+- Le second commit local enregistre l’organisation du suivi général et du suivi propre à chaque application.
 - Aucun dépôt GitHub distant n’est configuré.
 - Rien n’est publié depuis ce dépôt.
 
@@ -44,6 +45,8 @@
 - Un fichier `.gitignore` limité à `.DS_Store` a été ajouté le 27 août 2026. Il ignore ces fichiers système macOS à la racine et dans tous les sous-dossiers, sans exclure aucun fichier nécessaire aux applications.
 - Le contenu du premier commit local a été préparé et contrôlé le 27 août 2026 : 12 fichiers utiles sont sélectionnés, comprenant les documents du dépôt, la notice, l’application, le manifeste, le service worker et les cinq images. Aucun `.DS_Store` ni fichier JSON personnel n’est sélectionné. Le manifeste, la syntaxe du service worker et les dimensions des quatre icônes finales ont été contrôlés. Aucun commit n’a encore été créé et rien n’a été publié.
 - Le premier commit local a été créé le 27 août 2026 sous le titre « Initialiser le dépôt des applications PWA ». Aucun dépôt distant n’a été configuré et rien n’a été publié.
+- Un état propre à « JA — Réseau PERT » a été créé le 27 août 2026 dans `JA-Reseau-PERT/ETAT_DU_PROJET.md`. L’état général reste à la racine du dépôt ; le nouveau fichier regroupe uniquement les caractéristiques, vérifications et étapes restantes de cette application. Aucun fichier du programme n’a été modifié et rien n’a été publié.
+- Le second commit local a été créé le 27 août 2026 sous le titre « Organiser le suivi par application ». Il contient uniquement l’actualisation de l’état général et le nouvel état propre à « JA — Réseau PERT ». Rien n’a été publié.
 
 ## Prochaine étape proposée
 
