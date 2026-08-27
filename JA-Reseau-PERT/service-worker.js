@@ -1,9 +1,12 @@
-const NOM_CACHE = "ja-reseau-pert-coquille-v1";
+const NOM_CACHE = "ja-reseau-pert-coquille-v2";
 const PREFIXE_CACHE = "ja-reseau-pert-coquille-";
 const ENTREE_APPLICATION = new URL("./index.html", self.registration.scope).href;
+const PAGE_ACCUEIL = new URL("./accueil.html", self.registration.scope).href;
 const FICHIERS_APPLICATION = [
   "./index.html",
+  "./accueil.html",
   "./manifest.webmanifest",
+  "../output/pdf/NOTICE_UTILISATEUR_JA_RESEAU_PERT.pdf",
   "./assets/icons/ja-reseau-pert-180.png",
   "./assets/icons/ja-reseau-pert-192.png",
   "./assets/icons/ja-reseau-pert-512.png",
@@ -38,18 +41,11 @@ self.addEventListener("fetch", (evenement) => {
   if (adresse.origin !== self.location.origin) return;
 
   if (requete.mode === "navigate") {
+    const pageDeRepli = adresse.href === PAGE_ACCUEIL ? PAGE_ACCUEIL : ENTREE_APPLICATION;
     evenement.respondWith(
       fetch(requete)
-        .then(async (reponse) => {
-          if (!reponse.ok) {
-            return (await caches.match(ENTREE_APPLICATION)) || reponse;
-          }
-
-          const cache = await caches.open(NOM_CACHE);
-          await cache.put(ENTREE_APPLICATION, reponse.clone());
-          return reponse;
-        })
-        .catch(() => caches.match(ENTREE_APPLICATION))
+        .then((reponse) => reponse.ok ? reponse : caches.match(pageDeRepli).then((copie) => copie || reponse))
+        .catch(() => caches.match(pageDeRepli))
     );
     return;
   }

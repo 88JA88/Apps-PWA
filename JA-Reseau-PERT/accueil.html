@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f8f7">
+  <title>Installer JA — Réseau PERT</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icons/ja-reseau-pert-192.png">
+  <link rel="apple-touch-icon" href="./assets/icons/ja-reseau-pert-180.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --fond: #f4f7f6;
+      --carte: #ffffff;
+      --texte: #1f292b;
+      --secondaire: #59676a;
+      --accent: #2f6268;
+      --accent-fonce: #214b50;
+      --bordure: #d7e0df;
+      --ombre: 0 22px 55px rgba(30, 62, 65, 0.13);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: max(22px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+        max(22px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+      background:
+        radial-gradient(circle at 12% 8%, rgba(47, 98, 104, 0.13), transparent 30%),
+        linear-gradient(145deg, #f8faf9, var(--fond));
+      color: var(--texte);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      width: min(100%, 780px);
+      overflow: hidden;
+      border: 1px solid rgba(47, 98, 104, 0.16);
+      border-radius: 28px;
+      background: var(--carte);
+      box-shadow: var(--ombre);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid var(--bordure);
+    }
+
+    .logo {
+      width: 116px;
+      height: 116px;
+      flex: 0 0 auto;
+      border-radius: 22px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      color: var(--accent-fonce);
+      font-size: clamp(1.9rem, 5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    header p, .introduction {
+      margin: 0;
+      color: var(--secondaire);
+      font-size: 1.06rem;
+      line-height: 1.5;
+    }
+
+    .contenu { padding: 30px 40px 36px; }
+
+    .introduction { margin-bottom: 24px; }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .bouton {
+      min-height: 58px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font: inherit;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+    }
+
+    .bouton:hover { transform: translateY(-1px); }
+    .bouton:focus-visible { outline: 3px solid rgba(47, 98, 104, 0.28); outline-offset: 3px; }
+
+    .principal {
+      grid-column: 1 / -1;
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 9px 22px rgba(47, 98, 104, 0.22);
+    }
+
+    .principal:hover { background: var(--accent-fonce); }
+    .secondaire { background: #fff; color: var(--accent-fonce); }
+    .secondaire:hover { background: #f1f6f5; }
+
+    .etat {
+      min-height: 24px;
+      margin: 14px 0 0;
+      color: var(--secondaire);
+      font-size: 0.94rem;
+      line-height: 1.45;
+      text-align: center;
+    }
+
+    .aide {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border: 1px solid var(--bordure);
+      border-radius: 16px;
+      background: #f7f9f8;
+    }
+
+    .aide[hidden] { display: none; }
+    .aide h2 { margin: 0 0 8px; color: var(--accent-fonce); font-size: 1.08rem; }
+    .aide p { margin: 0; color: var(--secondaire); line-height: 1.5; }
+
+    footer {
+      padding: 0 40px 30px;
+      color: #748184;
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      main { border-radius: 22px; }
+      header { align-items: flex-start; gap: 16px; padding: 26px 22px 22px; }
+      .logo { width: 82px; height: 82px; border-radius: 16px; }
+      .contenu { padding: 24px 22px 28px; }
+      .actions { grid-template-columns: 1fr; }
+      .principal { grid-column: auto; }
+      footer { padding: 0 22px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img class="logo" src="./assets/icons/ja-reseau-pert-192.png" alt="Logo JA — Réseau PERT">
+      <div>
+        <h1>JA — Réseau PERT</h1>
+      </div>
+    </header>
+
+    <section class="contenu" aria-labelledby="bienvenue">
+      <p class="introduction" id="bienvenue">
+        Une seule adresse suffit. Installez d’abord l’application, puis ouvrez sa notice PDF pour la consulter, la conserver ou l’imprimer.
+      </p>
+
+      <div class="actions">
+        <button class="bouton principal" id="installer" type="button">Installer l’application</button>
+        <a class="bouton secondaire" href="./index.html">Ouvrir Réseau PERT</a>
+        <a class="bouton secondaire" href="../output/pdf/NOTICE_UTILISATEUR_JA_RESEAU_PERT.pdf" target="_blank" rel="noopener">Ouvrir la notice PDF</a>
+      </div>
+
+      <p class="etat" id="etat" role="status" aria-live="polite">L’application reste accessible en ligne tant qu’elle n’est pas installée.</p>
+
+      <div class="aide" id="aide" hidden>
+        <h2 id="titre-aide">Installation depuis le navigateur</h2>
+        <p id="texte-aide"></p>
+      </div>
+    </section>
+
+    <footer>Premier chargement avec une connexion à Internet. L’application pourra ensuite fonctionner hors connexion.</footer>
+  </main>
+
+  <noscript>JavaScript doit être activé pour proposer l’installation. Vous pouvez néanmoins ouvrir l’application et sa notice.</noscript>
+
+  <script>
+    (() => {
+      const boutonInstaller = document.getElementById("installer");
+      const etat = document.getElementById("etat");
+      const aide = document.getElementById("aide");
+      const titreAide = document.getElementById("titre-aide");
+      const texteAide = document.getElementById("texte-aide");
+      const agent = navigator.userAgent.toLowerCase();
+      const estIOS = /iphone|ipad|ipod/.test(agent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      const estSafari = /safari/.test(agent) && !/chrome|crios|android|edg|opr/.test(agent);
+      const estInstallee = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+      let propositionInstallation = null;
+
+      function afficherAide() {
+        aide.hidden = false;
+        if (estIOS) {
+          titreAide.textContent = "Installer sur iPad ou iPhone";
+          texteAide.textContent = "Dans Safari, touchez Partager, puis Sur l’écran d’accueil. Activez Ouvrir comme app web et touchez Ajouter.";
+        } else if (estSafari) {
+          titreAide.textContent = "Installer avec Safari sur Mac";
+          texteAide.textContent = "Choisissez Fichier → Ajouter au Dock, puis confirmez avec Ajouter.";
+        } else {
+          titreAide.textContent = "Installer depuis ce navigateur";
+          texteAide.textContent = "Ouvrez le menu du navigateur et choisissez Installer l’application, Installer la page en tant qu’appli ou Ajouter à l’écran d’accueil.";
+        }
+        aide.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      if (estInstallee) {
+        boutonInstaller.textContent = "Application déjà installée";
+        boutonInstaller.disabled = true;
+        etat.textContent = "Vous pouvez ouvrir Réseau PERT ou sa notice.";
+      } else {
+        boutonInstaller.addEventListener("click", async () => {
+          if (!propositionInstallation) {
+            afficherAide();
+            return;
+          }
+
+          propositionInstallation.prompt();
+          const choix = await propositionInstallation.userChoice;
+          propositionInstallation = null;
+          etat.textContent = choix.outcome === "accepted"
+            ? "Installation confirmée. Vous pouvez maintenant ouvrir la notice PDF."
+            : "Installation non effectuée. Vous pourrez la relancer depuis cette page.";
+        });
+      }
+
+      window.addEventListener("beforeinstallprompt", (evenement) => {
+        evenement.preventDefault();
+        propositionInstallation = evenement;
+        etat.textContent = "L’installation directe est disponible sur ce navigateur.";
+      });
+
+      window.addEventListener("appinstalled", () => {
+        propositionInstallation = null;
+        boutonInstaller.textContent = "Application installée";
+        boutonInstaller.disabled = true;
+        aide.hidden = true;
+        etat.textContent = "Installation terminée. Ouvrez maintenant la notice PDF.";
+      });
+
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./service-worker.js").catch(() => {
+            etat.textContent = "L’application reste accessible en ligne tant qu’elle n’est pas installée.";
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

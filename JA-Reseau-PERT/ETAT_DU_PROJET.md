@@ -11,6 +11,7 @@
 
 - Dossier : `/Users/ja/NOUVELLE STRUCTURE/JEUX/Apps-PWA/JA-Reseau-PERT/`.
 - `index.html` : application complète « JA — Réseau PERT », avec CSS et JavaScript intégrés.
+- `accueil.html` : page locale de distribution avec installation assistée, ouverture de l’application et ouverture de la notice PDF dans un nouvel onglet.
 - `manifest.webmanifest` : manifeste PWA limité au dossier de l’application.
 - `service-worker.js` : installation et fonctionnement hors connexion.
 - `assets/icons/` : image maître et icônes PNG de 180, 192, 512 et 1 024 px.
@@ -25,8 +26,8 @@
   - `ja-reseau-pert-pwa-sauvegarde-automatique-v1` ;
   - `ja-reseau-pert-pwa-catalogue-ressources-v1` ;
   - `ja-reseau-pert-pwa-nom-fichier-actif-v1`.
-- Le cache hors connexion est propre à l’application : `ja-reseau-pert-coquille-v1`.
-- Le cache contient uniquement l’application, son manifeste et ses quatre icônes finales ; aucun planning ni fichier JSON personnel n’est mis en cache.
+- Le cache hors connexion est propre à l’application : `ja-reseau-pert-coquille-v2`.
+- Le cache contient l’application, la page d’accueil, la notice PDF, le manifeste et les quatre icônes finales ; aucun planning ni fichier JSON personnel n’est mis en cache.
 - L’importation et l’exportation des projets restent au format JSON `planning-reseau`, version 1.
 
 ## Vérifications validées
@@ -40,20 +41,25 @@
 - Redémarrage et utilisation hors connexion réussis sur Mac.
 - Exportation hors connexion réussie vers un fichier JSON valide.
 - Notice utilisateur validée, avec Safari recommandé sur Mac et iPad, Chrome sur Windows et Android, et Opera signalé comme compatible mais non encore testé réellement.
+- Déploiement GitHub Pages terminé avec le statut `built` ; page HTML, manifeste, service worker et icône servis en HTTPS avec les statuts et types de contenu attendus.
+- Contrôle dans le navigateur réussi à l’adresse publique : titre et en-tête « JA — Réseau PERT », commandes « Ouvrir » et « Enregistrer » visibles, aucune erreur ni aucun avertissement de console.
+- Notice utilisateur complétée localement par les méthodes d’installation propres à Safari, Chrome, Edge et Opera, ainsi que par l’avertissement qu’un fichier `.html` enregistré n’est pas une application installée. Cette actualisation n’est pas encore publiée.
+- Notice PDF A4 créée localement dans `../output/pdf/NOTICE_UTILISATEUR_JA_RESEAU_PERT.pdf`. Les quatre pages ont été contrôlées visuellement une à une ; aucun texte tronqué, débordement ou symbole manquant ne subsiste. Le Markdown source et l’application sont inchangés, et le PDF n’est pas publié.
+- Page de distribution `accueil.html` créée et testée localement sur ordinateur et à 390 px de largeur. Les commandes d’installation, d’ouverture de l’application et d’ouverture du PDF sont présentes, les chemins répondent correctement, et aucune erreur de console n’a été relevée. Le PDF s’ouvre dans un nouvel onglet afin d’éviter le téléchargement forcé, moins fiable dans Safari. Le service worker met en cache cette page et le PDF sans remplacer l’entrée hors connexion de l’application. Rien n’est publié.
+- Le message de repli de la page d’accueil a été simplifié en « L’application reste accessible en ligne tant qu’elle n’est pas installée. », notamment pour l’ouverture directe du fichier local. Rien n’est publié.
+- Le sous-titre de la page d’accueil a été supprimé et le message sur l’accès en ligne est maintenant visible dès l’ouverture. Le contrôle local confirme la disparition du sous-titre, la présence du message et l’absence d’erreur. Rien n’est publié.
 
 ## État de publication
 
-- L’application n’est pas publiée depuis le dépôt autonome `Apps-PWA`.
-- Le dépôt GitHub public `88JA88/Apps-PWA` existe et est configuré localement comme destination `origin`, mais aucun commit ne lui a encore été envoyé.
-- Aucune adresse HTTPS définitive n’est encore validée.
+- L’application est publiée en HTTPS depuis la racine de la branche `main` du dépôt public `88JA88/Apps-PWA`.
+- Adresse validée : `https://88ja88.github.io/Apps-PWA/JA-Reseau-PERT/`.
+- GitHub Pages utilise HTTPS forcé.
 
 ## Prochaine étape proposée
 
-- Après la préparation et la validation du dépôt GitHub général `Apps-PWA`, publier cette application en HTTPS uniquement avec l’accord explicite de l’utilisateur.
+- Faire valider la page d’accueil locale, puis décider séparément de son enregistrement dans un commit et de sa publication.
 
 ## Reste à faire
 
-- Valider l’adresse HTTPS définitive.
-- Publier après accord explicite.
 - Installer ensuite l’application depuis cette adresse dans Safari sur iPad.
 - Contrôler réellement sur iPad l’ouverture, la conservation automatique, le fonctionnement hors connexion, l’importation et l’exportation JSON.

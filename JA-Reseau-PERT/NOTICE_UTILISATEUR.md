@@ -24,21 +24,61 @@ Lors du premier démarrage, une connexion à Internet est nécessaire pour insta
 
 ## Installation
 
-### Sur Mac
+Ouvrez l’adresse suivante avec une connexion à Internet :
 
-1. Ouvrez dans Safari l’adresse de l’application qui vous a été communiquée.
-2. Attendez que l’application soit entièrement affichée.
-3. Dans le menu **Fichier** de Safari, choisissez **Ajouter au Dock…**.
-4. Conservez le nom **Réseau PERT**, puis cliquez sur **Ajouter**.
-5. L’application est désormais accessible depuis le Dock et le dossier Applications.
+https://88ja88.github.io/Apps-PWA/JA-Reseau-PERT/
 
-### Sur iPad
+L’application ne se télécharge pas sous la forme d’un fichier `.html`, `.dmg` ou `.exe`. Elle est installée directement par le navigateur. Attendez que l’application soit entièrement affichée avant de lancer l’installation.
 
-1. Ouvrez dans Safari l’adresse de l’application qui vous a été communiquée.
-2. Attendez que l’application soit entièrement affichée.
-3. Touchez le bouton **Partager** de Safari.
-4. Choisissez **Sur l’écran d’accueil**, puis **Ajouter**.
+### Safari sur Mac
+
+1. Ouvrez l’adresse dans Safari.
+2. Choisissez **Fichier → Ajouter au Dock…**, ou **Partager → Ajouter au Dock**.
+3. Conservez le nom **Réseau PERT**, puis cliquez sur **Ajouter**.
+4. Lancez ensuite l’application depuis le Dock ou le dossier Applications.
+
+### Safari sur iPad
+
+1. Ouvrez l’adresse dans Safari.
+2. Touchez **Partager**, puis **Plus** si nécessaire.
+3. Choisissez **Sur l’écran d’accueil**.
+4. Activez **Ouvrir comme app web**, puis touchez **Ajouter**.
 5. Lancez ensuite l’application depuis son icône **Réseau PERT**.
+
+### Chrome sur Windows ou Mac
+
+1. Ouvrez l’adresse dans Chrome.
+2. Cliquez sur **⋮**.
+3. Choisissez **Caster, enregistrer et partager**.
+4. Cliquez sur **Installer la page en tant qu’appli…**.
+5. Confirmez avec **Installer**.
+
+Ne choisissez pas **Enregistrer la page sous…** : cette commande crée seulement un fichier HTML et n’installe pas l’application.
+
+### Chrome sur Android
+
+1. Ouvrez l’adresse dans Chrome.
+2. Touchez **⋮**.
+3. Choisissez **Installer et créer un raccourci**, puis **Installer**.
+4. Suivez les indications affichées à l’écran.
+
+### Microsoft Edge sur Windows
+
+1. Ouvrez l’adresse dans Edge.
+2. Cliquez sur l’icône **Application disponible** dans la barre d’adresse.
+3. Cliquez sur **Installer**.
+
+La commande peut aussi se trouver dans **⋯ → Applications**.
+
+### Opera
+
+Recherchez une icône ou une commande **Installer** dans la barre d’adresse ou le menu. Opera est compatible, mais n’a pas encore été testé réellement avec cette application.
+
+### Autres navigateurs
+
+Si aucune commande d’installation n’est proposée, l’application reste utilisable directement dans le navigateur. Enregistrez son adresse dans les favoris ou ouvrez-la dans le navigateur recommandé : Safari sur Mac et iPad, Chrome sur Windows et Android.
+
+Après l’installation, lancez l’application depuis son icône. Le planning en cours est conservé automatiquement sur l’appareil, mais une sauvegarde JSON régulière reste recommandée.
 
 ## Sauvegarde et restauration du projet
 
