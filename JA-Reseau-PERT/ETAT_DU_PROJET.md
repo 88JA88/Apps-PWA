@@ -44,7 +44,7 @@
 ## État de publication
 
 - L’application n’est pas publiée depuis le dépôt autonome `Apps-PWA`.
-- Aucun dépôt GitHub distant n’est encore configuré.
+- Le dépôt GitHub public `88JA88/Apps-PWA` existe et est configuré localement comme destination `origin`, mais aucun commit ne lui a encore été envoyé.
 - Aucune adresse HTTPS définitive n’est encore validée.
 
 ## Prochaine étape proposée

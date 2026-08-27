@@ -12,8 +12,10 @@
 - Branche actuelle : `main`.
 - Le premier commit local regroupe les 12 fichiers contrôlés du dépôt et de « JA — Réseau PERT ».
 - Le second commit local enregistre l’organisation du suivi général et du suivi propre à chaque application.
-- Aucun dépôt GitHub distant n’est configuré.
-- Rien n’est publié depuis ce dépôt.
+- Le troisième commit local consigne la création du dépôt GitHub vide et sa configuration comme destination `origin`.
+- GitHub CLI est authentifié localement avec le compte `88JA88`.
+- Le dépôt GitHub public vide `88JA88/Apps-PWA` est configuré comme destination locale `origin`.
+- Aucun commit local n’a encore été envoyé et GitHub Pages n’est pas activé.
 
 ## Application présente
 
@@ -47,13 +49,16 @@
 - Le premier commit local a été créé le 27 août 2026 sous le titre « Initialiser le dépôt des applications PWA ». Aucun dépôt distant n’a été configuré et rien n’a été publié.
 - Un état propre à « JA — Réseau PERT » a été créé le 27 août 2026 dans `JA-Reseau-PERT/ETAT_DU_PROJET.md`. L’état général reste à la racine du dépôt ; le nouveau fichier regroupe uniquement les caractéristiques, vérifications et étapes restantes de cette application. Aucun fichier du programme n’a été modifié et rien n’a été publié.
 - Le second commit local a été créé le 27 août 2026 sous le titre « Organiser le suivi par application ». Il contient uniquement l’actualisation de l’état général et le nouvel état propre à « JA — Réseau PERT ». Rien n’a été publié.
+- La connexion GitHub locale du compte `88JA88` a été renouvelée le 27 août 2026. Le contrôle avec GitHub CLI confirme l’authentification et l’utilisation du protocole HTTPS. Aucun dépôt distant n’a été créé, aucun lien `origin` n’a été ajouté et rien n’a été publié.
+- Le dépôt GitHub public vide `88JA88/Apps-PWA` a été créé le 27 août 2026 et ajouté localement comme destination `origin` à l’adresse `https://github.com/88JA88/Apps-PWA.git`. Aucun commit n’a été envoyé et GitHub Pages n’a pas été activé.
+- Le troisième commit local a été créé le 27 août 2026 sous le titre « Consigner la configuration GitHub ». Il contient uniquement les actualisations de l’état général et de l’état propre à « JA — Réseau PERT ». Aucun commit n’a été envoyé sur GitHub.
 
 ## Prochaine étape proposée
 
-- Après autorisation explicite, préparer la création et la configuration du dépôt GitHub distant, sans publier tant que l’adresse et les réglages n’ont pas été validés.
+- Après autorisation explicite, envoyer les trois commits locaux vers `origin/main`, sans encore activer GitHub Pages.
 
 ## Reste à faire
 
-- Configurer le futur dépôt GitHub uniquement après accord explicite.
-- Publier ensuite en HTTPS après accord explicite.
+- Envoyer les commits vers GitHub uniquement après accord explicite.
+- Activer ensuite la publication HTTPS GitHub Pages après accord explicite.
 - Effectuer l’installation et les contrôles réels sur iPad.
