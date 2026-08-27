@@ -179,7 +179,7 @@
         <a class="bouton secondaire" href="../output/pdf/NOTICE_UTILISATEUR_JA_RESEAU_PERT.pdf" target="_blank" rel="noopener">Ouvrir la notice PDF</a>
       </div>
 
-      <p class="etat" id="etat" role="status" aria-live="polite">L’application reste accessible en ligne tant qu’elle n’est pas installée.</p>
+      <p class="etat" id="etat" role="status" aria-live="polite">L’application est accessible en ligne tant qu’elle n’est pas installée en cliquant sur “Ouvrir Réseau PERT”.</p>
 
       <div class="aide" id="aide" hidden>
         <h2 id="titre-aide">Installation depuis le navigateur</h2>
@@ -257,7 +257,7 @@
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("./service-worker.js").catch(() => {
-            etat.textContent = "L’application reste accessible en ligne tant qu’elle n’est pas installée.";
+            etat.textContent = "L’application est accessible en ligne tant qu’elle n’est pas installée en cliquant sur “Ouvrir Réseau PERT”.";
           });
         });
       }
