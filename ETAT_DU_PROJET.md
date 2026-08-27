@@ -61,10 +61,11 @@
 - Une page d’accueil de distribution a été créée localement le 27 août 2026 dans `JA-Reseau-PERT/accueil.html`. Elle propose l’installation lorsque le navigateur l’autorise, affiche sinon les instructions adaptées, ouvre l’application et ouvre la notice PDF dans un nouvel onglet. Cette ouverture normale remplace le téléchargement forcé, moins fiable dans Safari. Le service worker utilise désormais le cache `ja-reseau-pert-coquille-v2`, conserve séparément la page d’accueil et l’entrée de l’application, et met la notice PDF à disposition hors connexion. L’affichage a été contrôlé sur ordinateur et à 390 px de largeur, sans débordement ni erreur de console ; le PDF répond correctement à la commande d’ouverture. L’application principale n’a pas été modifiée et rien n’a été publié.
 - Le message affiché lorsque l’installation assistée ne peut pas être proposée a été simplifié localement en « L’application reste accessible en ligne tant qu’elle n’est pas installée. ». Cette formulation évite de présenter l’ouverture directe du fichier local comme une panne. Rien n’a été publié.
 - Le sous-titre « Installer l’application et conserver sa notice » a été retiré de la page d’accueil. Le message « L’application reste accessible en ligne tant qu’elle n’est pas installée. » est désormais affiché immédiatement, puis remplacé seulement si un état d’installation plus précis est détecté. Le contrôle local confirme le résultat sans erreur ; rien n’a été publié.
+- Le commit `b01cf3a` (« Ajouter la page d’installation et la notice PDF ») a été envoyé sur `origin/main` le 27 août 2026. GitHub Pages a terminé le déploiement avec l’état `built`. La page d’accueil répond en HTTPS avec le statut 200 à l’adresse `https://88ja88.github.io/Apps-PWA/JA-Reseau-PERT/accueil.html` et la notice répond avec le statut 200 et le type `application/pdf`.
 
 ## Prochaine étape proposée
 
-- Faire valider la page d’accueil locale, puis décider séparément de son enregistrement dans un commit et de sa publication.
+- Effectuer un essai utilisateur réel depuis la nouvelle page d’accueil HTTPS.
 
 ## Reste à faire
 

@@ -48,16 +48,18 @@
 - Page de distribution `accueil.html` créée et testée localement sur ordinateur et à 390 px de largeur. Les commandes d’installation, d’ouverture de l’application et d’ouverture du PDF sont présentes, les chemins répondent correctement, et aucune erreur de console n’a été relevée. Le PDF s’ouvre dans un nouvel onglet afin d’éviter le téléchargement forcé, moins fiable dans Safari. Le service worker met en cache cette page et le PDF sans remplacer l’entrée hors connexion de l’application. Rien n’est publié.
 - Le message de repli de la page d’accueil a été simplifié en « L’application reste accessible en ligne tant qu’elle n’est pas installée. », notamment pour l’ouverture directe du fichier local. Rien n’est publié.
 - Le sous-titre de la page d’accueil a été supprimé et le message sur l’accès en ligne est maintenant visible dès l’ouverture. Le contrôle local confirme la disparition du sous-titre, la présence du message et l’absence d’erreur. Rien n’est publié.
+- La page d’accueil, la notice PDF et le cache `ja-reseau-pert-coquille-v2` ont été publiés par le commit `b01cf3a`. Le déploiement GitHub Pages est terminé avec l’état `built`. Les adresses HTTPS de la page d’accueil et du PDF répondent avec le statut 200 et le PDF est servi en `application/pdf`.
 
 ## État de publication
 
 - L’application est publiée en HTTPS depuis la racine de la branche `main` du dépôt public `88JA88/Apps-PWA`.
 - Adresse validée : `https://88ja88.github.io/Apps-PWA/JA-Reseau-PERT/`.
+- Adresse de distribution à communiquer : `https://88ja88.github.io/Apps-PWA/JA-Reseau-PERT/accueil.html`.
 - GitHub Pages utilise HTTPS forcé.
 
 ## Prochaine étape proposée
 
-- Faire valider la page d’accueil locale, puis décider séparément de son enregistrement dans un commit et de sa publication.
+- Effectuer un essai utilisateur réel depuis la page d’accueil HTTPS publiée.
 
 ## Reste à faire
 
