@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FF8C00">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/ja-applications-logo-couleurpng.png">
+  <title>Créer une couleur</title>
+  <style>
+    :root { color-scheme: light; --ink:#18322a; --muted:#60746d; --paper:#f5f7f3; --card:rgba(255,255,255,.82); --line:#dce6df; --accent:#347a5d; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; min-height:100dvh; font-family:"Segoe UI",ui-rounded,"SF Pro Rounded","Avenir Next",system-ui,sans-serif; color:var(--ink); background:radial-gradient(circle at 0 0,#d9f1e4 0,transparent 30rem),radial-gradient(circle at 100% 100%,#dcecf5 0,transparent 32rem),var(--paper); -webkit-tap-highlight-color:transparent; }
+    main { width:min(1100px,100%); margin:auto; padding:0 max(18px,env(safe-area-inset-right)) max(22px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left)); }
+    .app-header { display:grid; justify-items:stretch; gap:9px; margin:0 0 14px; padding:max(12px,env(safe-area-inset-top)) 0 0; }
+    .brand-mark { position:relative; display:grid; place-items:start center; justify-self:start; width:108px; aspect-ratio:1; overflow:hidden; background:#FF8C00; }
+    .brand-mark::after { content:""; position:absolute; z-index:1; right:0; bottom:0; left:0; height:8px; background:#FF8C00; }
+    .brand-logo { width:100%; height:calc(100% - 8px); object-fit:contain; object-position:center top; mix-blend-mode:multiply; }
+    .title-line { display:flex; width:100%; justify-content:space-between; align-items:center; gap:20px; }
+    h1 { margin:0; font-size:clamp(1.45rem,3.3vw,2.05rem); letter-spacing:-.05em; line-height:1; }
+    .tag { flex:0 0 auto; padding:7px 11px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.7); color:var(--muted); font-size:.78rem; font-weight:750; }
+    .workspace { display:grid; grid-template-columns:minmax(280px,1fr) minmax(360px,1.1fr); gap:16px; align-items:start; }
+    .panel { background:var(--card); border:1px solid rgba(255,255,255,.9); box-shadow:0 10px 28px rgba(35,76,59,.07); border-radius:20px; padding:clamp(16px,2.2vw,23px); backdrop-filter:blur(12px); }
+    .section-title { margin:0 0 8px; font-size:.98rem; letter-spacing:-.02em; }
+    .modes { display:flex; gap:6px; margin:0 0 9px; padding:4px; border:1px solid var(--line); border-radius:11px; background:#eef3ef; }
+    .mode { flex:1; min-height:32px; padding:6px 8px; border-radius:7px; background:transparent; color:var(--muted); font-size:.78rem; }
+    .mode[aria-selected="true"] { background:#fff; color:var(--ink); box-shadow:0 1px 4px #173b2c1c; }
+    .control { display:grid; grid-template-columns:62px 1fr 62px; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--line); }
+    .control:first-of-type { border-top:1px solid var(--line); }
+    .control label { font-weight:750; }
+    .slider-wrap { display:grid; align-items:center; height:38px; background-image:repeating-linear-gradient(to right,transparent 0,transparent calc(3.333% - 1px),rgba(63,78,71,.68) calc(3.333% - 1px),rgba(63,78,71,.68) 3.333%); }
+    input[type="range"] { appearance:none; width:100%; height:10px; border-radius:99px; outline-offset:5px; background:var(--track); touch-action:pan-y; }
+    input[type="range"]::-webkit-slider-thumb { appearance:none; width:28px; height:28px; border:3px solid white; border-radius:50%; background:var(--channel); box-shadow:0 2px 7px #173b2c44; cursor:pointer; }
+    input[type="range"]::-moz-range-thumb { width:22px; height:22px; border:3px solid white; border-radius:50%; background:var(--channel); box-shadow:0 2px 7px #173b2c44; cursor:pointer; }
+    input[type="range"]::-moz-range-track { height:10px; border-radius:99px; background:var(--track); }
+    input[type="number"] { width:62px; padding:7px 5px; border:1px solid var(--line); border-radius:9px; color:var(--ink); background:#fff; text-align:center; font:700 .95rem ui-monospace, SFMono-Regular, monospace; }
+    input[type="number"]:focus-visible, button:focus-visible, input[type="range"]:focus-visible { outline:3px solid #76c5a1; outline-offset:3px; }
+    .colour-area { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; }
+    .preview-stack { display:grid; gap:6px; }
+    .preview { aspect-ratio:1; min-height:0; border-radius:16px; background:#9bd9b9; box-shadow:inset 0 0 0 1px #ffffff66; transition:background .12s ease; }
+    .preview-code { display:block; color:var(--ink); text-align:center; font:800 clamp(.95rem,2.3vw,1.45rem) ui-monospace,SFMono-Regular,monospace; letter-spacing:.02em; }
+    button { min-height:39px; border:0; border-radius:10px; padding:9px 12px; color:white; background:var(--accent); font:750 .88rem ui-rounded,"SF Pro Rounded",sans-serif; cursor:pointer; transition:transform .14s,filter .14s; touch-action:manipulation; }
+    @media (hover:hover) { button:hover { filter:brightness(.94); } .swatch:hover .remove { opacity:1; } } button:active { transform:translateY(1px) scale(.98); }
+    .copy { width:100%; margin-top:8px; }
+    .memory { min-width:0; }
+    .swatches { display:grid; width:100%; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
+    .slot { display:grid; grid-template-rows:1fr auto; gap:3px; min-width:0; text-align:center; }
+    .slot-index { color:#000; font:700 .7rem ui-monospace,SFMono-Regular,monospace; line-height:13px; }
+    .swatch { position:relative; aspect-ratio:1; min-height:0; overflow:hidden; border:1px solid var(--line); border-radius:10px; background:#fff; cursor:pointer; padding:0; color:var(--ink); text-align:left; }
+    .swatch.empty { display:grid; place-items:center; background:repeating-linear-gradient(45deg,#fff,#fff 7px,#f5f7f3 7px,#f5f7f3 14px); border-style:dashed; color:var(--muted); }
+    .swatch.empty b { display:block; font-size:1.6rem; line-height:1; text-align:center; }.swatch.empty small { display:block; margin-top:4px; font:700 clamp(.42rem,1vw,.62rem) ui-rounded,sans-serif; }
+    .swatch-color { display:block; height:100%; }
+    .remove { position:absolute; top:2px; right:2px; display:grid; place-items:center; width:20px; height:20px; min-height:20px; padding:0; border-radius:50%; background:#ffffffdd; color:#385047; font-size:1rem; line-height:1; opacity:0; }
+    .swatch:focus-within .remove { opacity:1; }.remove:hover { background:#fff; }
+    .toast { position:fixed; left:50%; bottom:24px; z-index:10; transform:translate(-50%,150px); padding:11px 16px; border-radius:999px; color:#fff; background:#18322a; box-shadow:0 7px 20px #0003; font-weight:700; transition:transform .25s ease; }.toast.show { transform:translate(-50%,0); }
+    @media (max-width:760px) { .app-header { margin-bottom:10px; }.workspace { grid-template-columns:1fr; gap:12px; }.panel { border-radius:17px; }.remove { opacity:1; } }
+    @media (max-width:520px) { h1 { font-size:1.38rem; } .tag { padding:6px 8px; font-size:.7rem; } .panel { padding:14px; } .control { grid-template-columns:57px 1fr 57px; gap:8px; padding:8px 0; } input[type="number"] { width:57px; min-height:38px; } .colour-area { gap:10px; } .modes { gap:3px; } .mode { font-size:.7rem; padding-inline:4px; } .swatches { gap:5px; } .swatch.empty b { font-size:1.2rem; } .toast { bottom:max(18px,env(safe-area-inset-bottom)); max-width:calc(100vw - 34px); text-align:center; } }
+    @media (max-width:360px) { header .tag { display:none; } }
+    @media (forced-colors:active) { .panel,.tag,.preview-code,input[type="number"],.hex-input,.swatch { border:1px solid CanvasText; background:Canvas; color:CanvasText; box-shadow:none; } button { border:1px solid ButtonText; background:ButtonFace; color:ButtonText; } .preview { border:2px solid CanvasText; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="app-header"><div class="brand-mark"><img class="brand-logo" src="assets/ja-applications-logo-couleurpng.png" alt="JA-Applications"></div><div class="title-line"><h1>Créer une couleur</h1><div class="tag">Hors ligne · local</div></div></header>
+    <div class="workspace">
+      <section class="panel" aria-label="Réglages des couleurs">
+        <div class="modes" role="tablist" aria-label="Mode de réglage"><button class="mode" type="button" role="tab" aria-selected="true" data-mode="rgb">RVB</button><button class="mode" type="button" role="tab" aria-selected="false" data-mode="hsl">Teinte – Saturation – Clarté</button></div>
+        <div class="control"><label for="red">Rouge</label><div class="slider-wrap"><input id="red" type="range" min="0" max="255" value="155" data-channel="r"></div><input aria-label="Valeur rouge" class="number" type="number" min="0" max="255" value="155" data-channel="r"></div>
+        <div class="control"><label for="green">Vert</label><div class="slider-wrap"><input id="green" type="range" min="0" max="255" value="217" data-channel="g"></div><input aria-label="Valeur verte" class="number" type="number" min="0" max="255" value="217" data-channel="g"></div>
+        <div class="control"><label for="blue">Bleu</label><div class="slider-wrap"><input id="blue" type="range" min="0" max="255" value="185" data-channel="b"></div><input aria-label="Valeur bleue" class="number" type="number" min="0" max="255" value="185" data-channel="b"></div>
+      </section>
+      <section class="panel" aria-label="Aperçu et couleurs mémorisées"><div class="colour-area"><div class="preview-stack"><div class="preview" id="preview"></div><span class="preview-code" id="previewCode">#9BD9B9</span></div><div class="memory"><div class="swatches" id="swatches" aria-label="Couleurs mémorisées"></div></div></div>
+        <button class="copy" id="copy" type="button">Copier le code HEX</button>
+      </section>
+    </div>
+  </main><div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    (() => {
+      const KEY = 'creer-une-couleur-v1';
+      const defaults = { rgb:{r:95,g:177,b:161}, hue:168, saved:Array(8).fill(null) };
+      let state = defaults;
+      let mode = 'rgb';
+      try { const saved = JSON.parse(localStorage.getItem(KEY)); if (saved?.rgb && Array.isArray(saved.saved)) { const savedHsl=rgbToHsl(saved.rgb); state = {rgb:saved.rgb, hue:Number.isFinite(saved.hue)?saved.hue:savedHsl.h, saved:[...saved.saved.slice(0,8), ...Array(8).fill(null)].slice(0,8)}; } } catch (_) {}
+      const $ = s => document.querySelector(s), sliders = [...document.querySelectorAll('input[type=range]')], numbers = [...document.querySelectorAll('.number')], rows = [...document.querySelectorAll('.control')], modeButtons = [...document.querySelectorAll('.mode')];
+      const hex = rgb => '#' + [rgb.r,rgb.g,rgb.b].map(n => Number(n).toString(16).padStart(2,'0')).join('').toUpperCase();
+      const save = () => localStorage.setItem(KEY, JSON.stringify(state));
+      const flash = message => { const t=$('#toast'); t.textContent=message; t.classList.add('show'); clearTimeout(flash.timer); flash.timer=setTimeout(()=>t.classList.remove('show'),1900); };
+      const clamp = (n,min,max) => Math.max(min,Math.min(max,Math.round(Number.isFinite(+n)?+n:min)));
+      function rgbToHsl({r,g,b}) { r/=255; g/=255; b/=255; const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min,l=(max+min)/2; let h=0,s=0; if(d){s=d/(1-Math.abs(2*l-1)); if(max===r)h=60*(((g-b)/d)%6); else if(max===g)h=60*((b-r)/d+2); else h=60*((r-g)/d+4);} return {h:Math.round((h+360)%360),s:Math.round(s*100),l:Math.round(l*100)}; }
+      function hslToRgb({h,s,l}) { h=((h%360)+360)%360; s/=100; l/=100; const c=(1-Math.abs(2*l-1))*s,x=c*(1-Math.abs((h/60)%2-1)),m=l-c/2; let [r,g,b]=[0,0,0]; if(h<60)[r,g,b]=[c,x,0]; else if(h<120)[r,g,b]=[x,c,0]; else if(h<180)[r,g,b]=[0,c,x]; else if(h<240)[r,g,b]=[0,x,c]; else if(h<300)[r,g,b]=[x,0,c]; else [r,g,b]=[c,0,x]; return {r:Math.round((r+m)*255),g:Math.round((g+m)*255),b:Math.round((b+m)*255)}; }
+      function currentHsl() { const hsl=rgbToHsl(state.rgb); if(hsl.s===0) hsl.h=state.hue; else state.hue=hsl.h; return hsl; }
+      const configs = { rgb:[{key:'r',label:'Rouge',min:0,max:255},{key:'g',label:'Vert',min:0,max:255},{key:'b',label:'Bleu',min:0,max:255}], hsl:[{key:'h',label:'Teinte',min:0,max:360,suffix:'°'},{key:'s',label:'Saturation',min:0,max:100,suffix:'%'},{key:'l',label:'Clarté',min:0,max:100,suffix:'%'}] };
+      function track(key,value,hsl) { if(mode==='rgb'){const colors={r:'#e55b52',g:'#3f9d69',b:'#4f8dcc'},p=value/255*100; return {fill:colors[key],track:`linear-gradient(to right,${colors[key]} 0 ${p}%,#e3ebe6 ${p}% 100%)`};} const hue=`hsl(${hsl.h} 72% 48%)`; if(key==='h') return {fill:`hsl(${value} 72% 48%)`,track:'linear-gradient(to right,#e95050,#d7ce42,#48ad64,#43b8c2,#537fd6,#b15bb9,#e95050)'}; if(key==='s') return {fill:hue,track:`linear-gradient(to right,hsl(${hsl.h} 0% ${hsl.l}%),hsl(${hsl.h} 100% ${hsl.l}%))`}; return {fill:`hsl(${hsl.h} ${hsl.s}% ${value}%)`,track:`linear-gradient(to right,#000,hsl(${hsl.h} ${hsl.s}% 50%),#fff)`}; }
+      function renderControls() { const hsl=currentHsl(), values=mode==='rgb'?state.rgb:hsl; configs[mode].forEach((config,i)=>{const row=rows[i], slider=sliders[i], number=numbers[i], label=row.querySelector('label'), value=values[config.key], palette=track(config.key,value,hsl); label.textContent=config.label; label.htmlFor=slider.id; slider.min=number.min=config.min; slider.max=number.max=config.max; slider.value=number.value=value; slider.dataset.channel=number.dataset.channel=config.key; slider.setAttribute('aria-label',config.label); number.setAttribute('aria-label',`Valeur ${config.label.toLowerCase()}`); slider.style.setProperty('--track',palette.track); slider.style.setProperty('--channel',palette.fill); }); }
+      function render() {
+        const code=hex(state.rgb); $('#preview').style.background=code; $('#previewCode').textContent=code;
+        renderControls(); renderSwatches(); save();
+      }
+      function set(channel, value) { const config=configs[mode].find(item=>item.key===channel); if(!config)return; const next=clamp(value,config.min,config.max); if(mode==='rgb') { state.rgb[channel]=next; const hsl=rgbToHsl(state.rgb); if(hsl.s!==0) state.hue=hsl.h; } else { const hsl=currentHsl(); hsl[channel]=next; if(channel==='h') state.hue=next; state.rgb=hslToRgb(hsl); } render(); }
+      function renderSwatches() { $('#swatches').innerHTML=''; state.saved.forEach((colour,index) => { const slot=document.createElement('div'); slot.className='slot'; const item=document.createElement(colour ? 'div' : 'button'); if (!colour) item.type='button'; item.className='swatch'+(!colour?' empty':''); if(colour) { item.tabIndex=0; item.setAttribute('role','button'); item.setAttribute('aria-label',`Charger la couleur ${colour}`); item.innerHTML=`<span class="swatch-color" style="background:${colour}"></span><button class="remove" type="button" aria-label="Effacer ${colour}" title="Effacer">×</button>`; item.querySelector('.remove').addEventListener('click',e=>{e.stopPropagation(); state.saved[index]=null; render(); flash('Couleur effacée');}); const load=()=>{ const n=parseInt(colour.slice(1),16); state.rgb={r:n>>16,g:(n>>8)&255,b:n&255}; state.hue=rgbToHsl(state.rgb).h; render(); flash(`${colour} chargée`); }; item.addEventListener('click',load); item.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();load();}}); } else { item.setAttribute('aria-label',`Mémoriser la couleur actuelle dans l’emplacement ${index+1}`); item.innerHTML='<span><b>+</b><small>Mémoriser</small></span>'; item.addEventListener('click',()=>{state.saved[index]=hex(state.rgb);render();flash('Couleur mémorisée');}); } const label=document.createElement('span'); label.className='slot-index'; label.textContent=colour || '—'; slot.append(item,label); $('#swatches').append(slot); }); }
+      sliders.forEach(el=>el.addEventListener('input',()=>set(el.dataset.channel,el.value)));
+      numbers.forEach(el=>{el.addEventListener('input',()=>set(el.dataset.channel,el.value));el.addEventListener('blur',()=>render());});
+      modeButtons.forEach(button=>button.addEventListener('click',()=>{mode=button.dataset.mode; modeButtons.forEach(item=>item.setAttribute('aria-selected',String(item===button))); render();}));
+      $('#copy').addEventListener('click',async()=>{const code=hex(state.rgb);try{await navigator.clipboard.writeText(code);}catch(_){const temp=document.createElement('textarea');temp.value=code;document.body.append(temp);temp.select();document.execCommand('copy');temp.remove();}flash(`${code} copié`);});
+      render();
+    })();
+    if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
+  </script>
+</body>
+</html>

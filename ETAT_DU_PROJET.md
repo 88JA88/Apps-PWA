@@ -79,3 +79,10 @@
 - Son manifeste, service worker et cache sont propres à son sous-dossier. La sauvegarde JSON personnelle n’est pas publiée.
 - L’identité JA-Applications est utilisée avec le vert clair propre à cette application.
 - GitHub Pages la sert à l’adresse `https://88ja88.github.io/Apps-PWA/Mon-congelateur/`.
+
+## Ajout — Créer une couleur
+
+- L’application PWA « Créer une couleur » a été ajoutée le 26 octobre 2026 dans `creer-une-couleur/`, sans modifier les autres applications.
+- Elle propose les réglages RVB et Teinte–Saturation–Clarté, un aperçu HEX, huit mémoires de couleurs et un fonctionnement hors connexion.
+- Son manifeste, son service worker, son cache et ses données locales sont propres à son sous-dossier.
+- GitHub Pages la sert à l’adresse `https://88ja88.github.io/Apps-PWA/creer-une-couleur/`.
