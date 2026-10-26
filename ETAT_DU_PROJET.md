@@ -70,3 +70,12 @@
 ## Reste à faire
 
 - Effectuer l’installation et les contrôles réels sur iPad.
+
+
+## Ajout — Mon congélateur
+
+- L’application PWA « Mon congélateur » a été ajoutée le 26 octobre 2026 dans `Mon-congelateur/`, sans modifier « JA — Réseau PERT ».
+- Elle gère localement les denrées, portions, étagères, dates et contenants, avec export et import JSON.
+- Son manifeste, service worker et cache sont propres à son sous-dossier. La sauvegarde JSON personnelle n’est pas publiée.
+- L’identité JA-Applications est utilisée avec le vert clair propre à cette application.
+- GitHub Pages la sert à l’adresse `https://88ja88.github.io/Apps-PWA/Mon-congelateur/`.

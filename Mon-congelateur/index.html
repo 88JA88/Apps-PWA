@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#9bd9b9" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>Mon congélateur</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/ja-applications-logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div class="brand">
+          <img class="app-logo" src="assets/ja-applications-logo.png" width="128" height="128" alt="Logo JA-Applications" />
+          <h1>Mon congélateur</h1>
+        </div>
+        <button class="primary" id="new-entry-button" type="button">+ Nouvelle denrée</button>
+      </header>
+
+      <section class="panel inventory" aria-labelledby="inventory-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="inventory-title">Contenu du congélateur</h2>
+            <p id="inventory-count" aria-live="polite"></p>
+          </div>
+          <div class="inventory-controls">
+            <label class="search"><span class="visually-hidden">Rechercher une denrée</span><input id="search" type="search" placeholder="Rechercher…" /></label>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Denrée</th><th>Portions</th><th>Étagère</th><th>Date</th><th>Contenant</th><th><span class="visually-hidden">Actions</span></th></tr></thead>
+            <tbody id="entries"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state" hidden>
+            <span aria-hidden="true">❄</span>
+            <h3>Le congélateur est vide</h3>
+            <p>Ajoutez votre première denrée pour commencer l’inventaire.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel tools actions-bar" aria-label="Données et réglages">
+        <div class="tool-actions">
+          <button id="export-button" class="secondary" type="button">Enregistrer</button>
+          <label class="secondary file-button">Importer<input id="import-input" type="file" accept="application/json,.json" /></label>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+      <div><div class="dialog-heading"><h2 id="confirm-title">Supprimer cette entrée ?</h2></div><p id="confirm-message">Cette action est définitive.</p><div class="dialog-actions"><button class="secondary" id="confirm-cancel" type="button">Annuler</button><button class="danger" id="confirm-delete" type="button">Supprimer</button></div></div>
+    </dialog>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
