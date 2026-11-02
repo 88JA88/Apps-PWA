@@ -86,3 +86,10 @@
 - Elle propose les réglages RVB et Teinte–Saturation–Clarté, un aperçu HEX, huit mémoires de couleurs et un fonctionnement hors connexion.
 - Son manifeste, son service worker, son cache et ses données locales sont propres à son sous-dossier.
 - GitHub Pages la sert à l’adresse `https://88ja88.github.io/Apps-PWA/creer-une-couleur/`.
+
+## Ajout — Clé Agarics
+
+- La PWA « Clé Agarics » a été ajoutée le 2 novembre 2026 dans `cle-agarics/`, sans modifier les applications existantes.
+- Elle propose une clé interactive indicative des champignons à lamelles, des fiches de groupes et des liens de recherche vers MycoDB.
+- Son manifeste, son service worker, son cache `cle-agarics-v1` et son icône JA sont propres à ce sous-dossier.
+- Elle est conçue pour être servie par GitHub Pages à l’adresse `https://88ja88.github.io/Apps-PWA/cle-agarics/`.
