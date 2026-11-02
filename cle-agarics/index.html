@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#477b34">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="description" content="Clé d'identification indicative des agarics">
+    <title>Clé Agarics — questions-réponses</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="assets/ja-applications-logo.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="title-wrap">
+        <img class="app-logo" src="assets/ja-applications-logo.png" width="72" height="72" alt="Logo JA-Applications">
+        <div>
+        <p class="eyebrow">Clé de détermination</p>
+        <h1>Champignons à lamelles · Agarics</h1>
+        </div>
+      </div>
+      <div class="warning" role="note"><strong>Identification indicative uniquement.</strong> Cet outil propose des pistes, sans garantir l’identification ni la comestibilité. Ne consommez jamais un champignon sur la seule base de cet outil.</div>
+    </header>
+
+    <main>
+      <nav class="tabs" aria-label="Modes de consultation">
+        <button class="tab active" data-view="guide" aria-current="page">Mode questions-réponses</button>
+        <button class="tab" data-view="table">Clé en tableau</button>
+      </nav>
+
+      <section id="guide" class="view">
+        <div class="guide-layout">
+          <aside class="progress-panel" aria-label="Vos réponses">
+            <div class="progress-title"><span>Vos observations</span><span id="progress-count">0 réponse</span></div>
+            <ol id="history" class="history"><li class="muted">Répondez aux questions observables, dans l’ordre qui vous convient.</li></ol>
+            <div class="actions"><button id="back" class="secondary" disabled>← Retour</button><button id="restart" class="secondary">Recommencer</button></div>
+          </aside>
+          <section class="question-panel" aria-live="polite">
+            <p class="eyebrow" id="step-label">Première observation</p>
+            <h2 id="question-title">Chargement de la clé…</h2>
+            <p id="question-help" class="question-help"></p>
+            <div id="answers" class="answers"></div>
+            <button id="unknown" class="unknown">Je ne sais pas / je ne peux pas observer ce caractère</button>
+            <p class="hint">Vous pouvez revenir en arrière à tout moment : les réponses non certaines ne doivent pas servir à exclure une possibilité.</p>
+          </section>
+          <aside class="results-panel">
+            <p class="eyebrow">Possibilités restantes</p>
+            <h2><span id="result-count">0</span> groupe<span id="plural">s</span></h2>
+            <p id="result-status" class="result-status"></p>
+            <div id="results" class="result-list"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="table" class="view hidden">
+        <div class="table-intro"><h2>Clé consultable</h2><p>Transcription structurée des embranchements visibles de la clé Agarics. Faites défiler horizontalement sur petit écran.</p></div>
+        <div class="table-wrap"><table><thead><tr><th>Groupe</th><th>Caractères de la clé</th><th>Sporée</th></tr></thead><tbody id="key-table"></tbody></table></div>
+      </section>
+    </main>
+
+    <dialog id="profile-dialog"><article><button class="dialog-close" aria-label="Fermer">×</button><div id="profile-content"></div></article></dialog>
+    <script src="app.js"></script><script>if('serviceWorker' in navigator)navigator.serviceWorker.register('./service-worker.js');</script>
+  </body>
+</html>
