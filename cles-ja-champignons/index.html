@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Clés interactives de détermination des champignons">
+    <meta name="theme-color" content="#b66b22">
+    <title>Clés JA-Champignons</title>
+    <link rel="icon" href="assets/logo-ja-champignons.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="eyebrow">Clé interactive</p>
+      <h1>Clés JA-Champignons</h1>
+      <p class="subtitle">Clé des groupes</p>
+      <p class="warning"><strong>Identification indicative uniquement.</strong> Cet outil propose des pistes et ne garantit ni l’identification ni la comestibilité. Ne consommez jamais un champignon sur la seule base de cet outil.</p>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="intro-title">
+        <h2 id="intro-title">Clé des groupes</h2>
+        <p>Les caractères et les intitulés de cette première clé reprennent la planche fournie, sans ses renvois au livre. Lorsqu’une clé est disponible, vous pouvez l’ouvrir directement depuis les résultats possibles.</p>
+      </section>
+
+      <section class="key-layout" aria-label="Clé des groupes">
+        <aside class="observations">
+          <div class="panel-title"><span>Vos observations</span><span id="progress">0 réponse</span></div>
+          <ol id="history" class="history"><li class="muted">Commencez par choisir l’aspect général observé.</li></ol>
+          <div class="actions"><button id="back" class="secondary" disabled>← Retour</button><button id="restart" class="secondary">Recommencer</button></div>
+        </aside>
+
+        <section class="question-panel" aria-live="polite">
+          <p id="step" class="eyebrow">Première observation</p>
+          <h2 id="question">Chargement…</h2>
+          <p id="help" class="help"></p>
+          <div id="answers" class="answers"></div>
+          <button id="unknown" class="unknown">Je ne sais pas / je ne peux pas observer ce caractère</button>
+          <p class="hint">Une réponse incertaine ne doit pas servir à exclure une possibilité : vous pouvez revenir en arrière à tout moment.</p>
+        </section>
+
+        <aside class="result-panel">
+          <p class="eyebrow">Résultats possibles</p>
+          <h2><span id="count">0</span> groupe<span id="plural">s</span></h2>
+          <p id="status" class="status"></p>
+          <div id="results" class="results"></div>
+        </aside>
+      </section>
+
+      <section class="source-key" aria-labelledby="source-title">
+        <h2 id="source-title">Clé consultable</h2>
+        <p>Lecture directe des caractères actuellement intégrés à la clé des groupes.</p>
+        <div id="key-table" class="key-table"></div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+    <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./service-worker.js');}</script>
+  </body>
+</html>
