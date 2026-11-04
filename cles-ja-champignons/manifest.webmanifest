@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "Clés JA-Champignons",
+  "short_name": "JA-Champignons",
+  "description": "Clés interactives de détermination des champignons.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ea",
+  "theme_color": "#b66b22",
+  "icons": [
+    {"src": "assets/logo-ja-champignons.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}
