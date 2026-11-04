@@ -93,3 +93,4 @@
 - Elle propose une clé interactive indicative des champignons à lamelles, des fiches de groupes et des liens de recherche vers MycoDB.
 - Son manifeste, son service worker, son cache `cle-agarics-v1` et son icône JA sont propres à ce sous-dossier.
 - Elle est conçue pour être servie par GitHub Pages à l’adresse `https://88ja88.github.io/Apps-PWA/cle-agarics/`.
+- Le 4 novembre 2026, les choix de « Couleur de la sporée » de la Clé Agarics affichent un carré de la couleur correspondante, repris de la clé de référence (blanc, rosé, brun pourpre, noir, noirâtre, ocracé et ferrugineux).
