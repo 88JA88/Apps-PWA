@@ -95,3 +95,4 @@
 - Elle est conçue pour être servie par GitHub Pages à l’adresse `https://88ja88.github.io/Apps-PWA/cle-agarics/`.
 - Le 4 novembre 2026, les choix de « Couleur de la sporée » de la Clé Agarics affichent un carré de la couleur correspondante, repris de la clé de référence (blanc, rosé, brun pourpre, noir, noirâtre, ocracé et ferrugineux).
 - Le 4 novembre 2026, la transcription locale de la Clé Agarics a été corrigée : « Sporée noire (parfois sans anneau) » devient « Sporée noire », conformément au fichier de référence. Un bouton « Actualiser » a également été ajouté dans l’en-tête pour recharger l’application.
+- Le cache hors connexion de la Clé Agarics passe à `cle-agarics-v2` afin que les applications déjà installées reçoivent ces fichiers actualisés.
