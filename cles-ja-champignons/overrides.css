@@ -1,0 +1,34 @@
+.secondary{
+  background:var(--moss);
+  color:#fff;
+}
+.secondary:hover,
+.secondary:focus-visible{
+  background:#315d25;
+  color:#fff;
+  outline:2px solid #315d25;
+}
+.mycodb-mini-link{
+  display:inline-block;
+  margin:0 .45rem .25rem 0;
+  color:var(--ink);
+  font-weight:400;
+  text-decoration:underline;
+}
+.mycodb-mini-link:hover,
+.mycodb-mini-link:focus-visible{
+  color:var(--ink);
+  outline:2px solid var(--ink);
+  outline-offset:2px;
+}
+.mycodb-mini-link + .result-name{
+  display:inline;
+}
+.result-card small,
+.key-row small{
+  margin:.08rem 0 0;
+  line-height:1.12;
+}
+.result-card small{
+  min-height:1.12em;
+}
