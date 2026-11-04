@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cles-ja-champignons-v1';
+const CACHE_NAME = 'cles-ja-champignons-v2';
 const APP_FILES = ['./', './index.html', './styles.css', './app.js', './manifest.webmanifest', './assets/logo-ja-champignons.svg'];
 
 self.addEventListener('install', event => event.waitUntil(
