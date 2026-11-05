@@ -20,11 +20,11 @@ const speciesNotes = {
   'A-TUE-MOUCHES': 'Vénéneuse ! ',
   'A-A-VERRUES-JAUNES': 'Douteuse',
   'A-ROUGISSANTE': 'Excellent comestible (Golmotte, Oronge vineuse)',
-  'L-LISSE': 'Bon comestible',
+  'L-PUDIQUE': 'Bon comestible',
   'L-EN-BOUCLIER': 'Dangereuse !',
   'L-ELEVEE': 'Excellent comestible (coulemelle)',
   'L-AMERICAINE': 'Bon comestible',
-  'L-BRUNE': 'Bon comestible',
+  'L-BRUNE': 'toxique',
   'L-DE-MORGAN': 'Vénéneuse !'
 };
 
