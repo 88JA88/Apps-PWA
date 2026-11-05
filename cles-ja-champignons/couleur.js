@@ -37,6 +37,6 @@ document.addEventListener('click', event => {
   el('question').textContent='La sporée reste inconnue';
   el('help').textContent='Si vous ne savez pas, explorez les sporées dans l’ordre le plus probable.';
   el('unknown').hidden=true;
-  document.querySelector('.hint').textContent='Si vous ne savez pas, explorez les sporées dans l’ordre le plus probable.';
+  document.querySelector('.hint')?.remove();
   el('status').textContent='Résultat provisoire : ouvrez une clé disponible dans les résultats possibles ou revenez modifier une réponse.';
 }, true);
