@@ -15,6 +15,13 @@
   font-weight:400;
   text-decoration:underline;
 }
+.scientific-name{
+  margin-left:.36rem;
+  color:#4b5b4b;
+  font-size:.76rem;
+  font-weight:400;
+  white-space:nowrap;
+}
 .mycodb-mini-link:hover,
 .mycodb-mini-link:focus-visible{
   color:var(--ink);
@@ -30,5 +37,31 @@
   line-height:1.12;
 }
 .result-card small{
-  min-height:1.12em;
+  min-height:1em;
+  font-size:.76rem;
+  line-height:1.04;
+}
+.results{
+  gap:.18rem;
+}
+.result-card{
+  padding:.28rem .45rem;
+  line-height:1.12;
+}
+.result-name{
+  margin-bottom:0;
+  line-height:1.08;
+}
+.mycodb-mini-link{
+  margin:0 .28rem 0 0;
+  line-height:1.08;
+}
+.question-panel .eyebrow,
+.result-panel .eyebrow{
+  display:inline-block;
+  margin-bottom:.65rem;
+  padding:.18rem .45rem;
+  border-radius:.25rem;
+  background:var(--moss);
+  color:#fff;
 }
