@@ -16,13 +16,12 @@
       <div style="display:flex;align-items:center;gap:.65rem"><p class="eyebrow" style="margin:0">Clé interactive</p><button type="button" title="Actualiser l’application" onclick="window.location.reload()" style="border:1px solid #d8ecbd;border-radius:.35rem;padding:.25rem .45rem;background:transparent;color:#fff;font:inherit;font-size:.78rem;font-weight:750;cursor:pointer">↻ Actualiser l’application</button></div>
       <h1>Clés JA-Champignons</h1>
       <p class="subtitle">Clé des groupes</p>
-      <p class="warning"><strong>Identification indicative uniquement.</strong> Cet outil propose des pistes et ne garantit ni l’identification ni la comestibilité. Ne consommez jamais un champignon sur la seule base de cet outil.</p>
+      <p class="warning"><strong>Identification indicative.</strong> Ne consommez jamais un champignon sur la seule base de cet outil.</p>
     </header>
 
     <main>
       <section class="intro" aria-labelledby="intro-title">
         <h2 id="intro-title">Clé des groupes</h2>
-        <p>Lorsqu’une clé est disponible, vous pouvez l’ouvrir directement depuis les résultats possibles.</p>
       </section>
 
       <section class="key-layout" aria-label="Clé des groupes">
@@ -38,7 +37,6 @@
           <p id="help" class="help"></p>
           <div id="answers" class="answers"></div>
           <button id="unknown" class="unknown">Je ne sais pas / je ne peux pas observer ce caractère</button>
-          <p class="hint">Une réponse incertaine ne doit pas servir à exclure une possibilité : vous pouvez revenir en arrière à tout moment.</p>
         </section>
 
         <aside class="result-panel">
@@ -49,7 +47,7 @@
         </aside>
       </section>
 
-      <section class="source-key" aria-labelledby="source-title">
+      <section class="source-key" aria-labelledby="source-title" hidden>
         <h2 id="source-title">Clé consultable</h2>
         <p>Lecture directe des caractères actuellement intégrés à la clé des groupes.</p>
         <div id="key-table" class="key-table"></div>
@@ -64,6 +62,7 @@
     <script src="amanites.js"></script>
     <script src="lepiotes.js"></script>
     <script src="species-notes.js"></script>
+    <script src="scientific-names.js"></script>
     <script src="mycodb-results.js"></script>
     <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./service-worker.js');}</script>
   </body>
