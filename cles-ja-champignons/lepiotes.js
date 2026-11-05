@@ -5,12 +5,12 @@ Object.assign(terminals['LÉPIOTE'], {
 });
 
 Object.assign(terminals, {
-  'L-LISSE': {name: 'L. LISSE', species:true, mycodb:'Lepiota naucina'},
+  'L-PUDIQUE': {name: 'L. PUDIQUE', species:true, mycodb:'Lepiote pudique'},
   'L-EN-BOUCLIER': {name: 'L. EN BOUCLIER', species:true, mycodb:'Lepiote en bouclier'},
-  'L-ELEVEE': {name: 'L. ÉLEVÉE', species:true, mycodb:'Lepiote elevee'},
+  'L-ELEVEE': {name: 'L. ÉLEVÉE', species:true, mycodb:'Lepiote elevee', scientific:'Macrolepiota procera'},
   'L-AMERICAINE': {name: 'L. AMÉRICAINE', species:true, mycodb:'Lepiote americaine'},
   'L-BRUNE': {name: 'L. BRUNE', species:true, mycodb:'Lepiote brune'},
-  'L-DE-MORGAN': {name: 'L. DE MORGAN', species:true, mycodb:'Lepiote de Morgan'}
+  'L-DE-MORGAN': {name: 'L. DE MORGAN', species:true, mycodb:'Lepiote de Morgan', scientific:'Chlorophyllum molybdites'}
 });
 
 Object.assign(nodes, {
@@ -18,7 +18,7 @@ Object.assign(nodes, {
     title: 'Clé des Lépiotes',
     help: 'Observez la couleur et l’aspect du chapeau, ainsi que les lamelles et le pied.',
     answers: [
-      ['L-LISSE', 'Chapeau blanc non écailleux ; lamelles et pied blancs'],
+      ['L-PUDIQUE', 'Chapeau blanc non écailleux ; lamelles et pied blancs'],
       ['lepiotes-chapeau-ecailleux', 'Chapeau écailleux et coloré']
     ]
   },
