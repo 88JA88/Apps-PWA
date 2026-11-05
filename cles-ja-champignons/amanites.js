@@ -5,15 +5,15 @@ Object.assign(terminals.AMANITE, {
 });
 
 Object.assign(terminals, {
-  'A-DES-CESARS': {name: 'A. DES CÉSARS', species:true, mycodb:'Amanita caesarea'},
-  'A-CITRINE': {name: 'A. CITRINE', species:true, mycodb:'Amanite citrine'},
+  'A-DES-CESARS': {name: 'A. DES CÉSARS', species:true, mycodb:'Amanita caesarea', scientific:'Amanita caesarea'},
+  'A-CITRINE': {name: 'A. CITRINE', species:true, mycodb:'Amanite citrine', scientific:'Amanita citrina'},
   'A-PULVERULENTE': {name: 'A. PULVÉRULENTE', species:true, mycodb:'Amanite pulvérulente'},
-  'A-PRINTANIERE': {name: 'A. PRINTANIÈRE', species:true, mycodb:'Amanite printanière'},
-  'A-PHALLOIDE': {name: 'A. PHALLOÏDE', species:true, mycodb:'Amanite phalloïde'},
+  'A-PRINTANIERE': {name: 'A. PRINTANIÈRE', species:true, mycodb:'Amanite printanière', scientific:'Amanita verna'},
+  'A-PHALLOIDE': {name: 'A. PHALLOÏDE', species:true, mycodb:'Amanite phalloïde', scientific:'Amanita phalloides'},
   'A-BRUNISSANTE': {name: 'A. BRUNISSANTE', species:true, mycodb:'Amanite brunissante'},
-  'A-TUE-MOUCHES': {name: 'A. TUE-MOUCHES', species:true, mycodb:'Amanite tue-mouches'},
-  'A-A-VERRUES-JAUNES': {name: 'A. À VERRUES JAUNES', species:true, mycodb:'Amanite à verrues jaunes'},
-  'A-ROUGISSANTE': {name: 'A. ROUGISSANTE', species:true, mycodb:'Amanite rougissante'}
+  'A-TUE-MOUCHES': {name: 'A. TUE-MOUCHES', species:true, mycodb:'Amanite tue-mouches', scientific:'Amanita muscaria'},
+  'A-A-VERRUES-JAUNES': {name: 'A. À VERRUES JAUNES', species:true, mycodb:'Amanite à verrues jaunes', scientific:'Amanita gemmata'},
+  'A-ROUGISSANTE': {name: 'A. ROUGISSANTE', species:true, mycodb:'Amanite rougissante', scientific:'Amanita rubescens'}
 });
 
 Object.assign(nodes, {
