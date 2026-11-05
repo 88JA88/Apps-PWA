@@ -5,12 +5,12 @@ Object.assign(terminals.CHANTERELLE, {
 });
 
 Object.assign(terminals, {
-  'C-ORANGEE': {name: 'C. ORANGÉE', species:true, mycodb:'Chanterelle orangée'},
-  'C-CIBOIRE': {name: 'C. CIBOIRE', species:true, mycodb:'Chanterelle ciboire'},
+  'C-ORANGEE': {name: 'C. ORANGÉE', species:true, mycodb:'Chanterelle orangée', scientific:'Hygrophoropsis aurantiaca'},
+  'C-CIBOIRE': {name: 'C. CIBOIRE', species:true, mycodb:'Chanterelle ciboire', scientific:'Cantharellus cibarius'},
   'C-A-FLOCONS': {name: 'C. À FLOCONS', species:true, mycodb:'Chanterelle à flocons'},
   'C-JAUNATRE': {name: 'C. JAUNÂTRE', species:true, mycodb:'Chanterelle jaunâtre'},
-  'C-EN-ENTONNOIR': {name: 'C. EN ENTONNOIR', species:true, mycodb:'Chanterelle en entonnoir'},
-  'C-CLAVIFORME': {name: 'C. CLAVIFORME', species:true, mycodb:'Chanterelle claviforme'},
+  'C-EN-ENTONNOIR': {name: 'C. EN ENTONNOIR', species:true, mycodb:'Chanterelle en entonnoir', scientific:'Craterellus tubaeformis'},
+  'C-CLAVIFORME': {name: 'C. CLAVIFORME', species:true, mycodb:'Chanterelle claviforme', scientific:'Gomphus clavatus'},
   'C-OMBONEE': {name: 'C. OMBONÉE', species:true, mycodb:'Chanterelle ombonée'}
 });
 
