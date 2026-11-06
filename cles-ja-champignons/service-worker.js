@@ -1,5 +1,5 @@
-const CACHE_NAME = 'cles-ja-champignons-v28';
-const APP_FILES = ['./', './index.html', './styles.css', './overrides.css', './app.js', './couleur.js', './noir.js', './terrain.js', './terrain-agarics.js', './chanterelles.js', './amanites.js', './lepiotes.js', './species-notes.js', './scientific-names.js', './mycodb-results.js', './manifest.webmanifest', './assets/logo-ja-champignons.svg'];
+const CACHE_NAME = 'cles-ja-champignons-v33';
+const APP_FILES = ['./', './index.html', './styles.css', './overrides.css', './app.js', './couleur.js', './noir.js', './terrain.js', './terrain-agarics.js', './chanterelles.js', './amanites.js', './lepiotes.js', './species-notes.js', './scientific-names.js', './mycodb-results.js', './group-guides.js', './manifest.webmanifest', './assets/logo-ja-champignons.svg'];
 
 self.addEventListener('install', event => event.waitUntil(
   caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES)).then(() => self.skipWaiting())
