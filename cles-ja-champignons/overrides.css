@@ -22,6 +22,35 @@
   font-weight:400;
   white-space:nowrap;
 }
+
+.group-guide {
+  max-width: 62rem;
+  margin-top: .75rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line, #d7d8c7);
+  border-radius: .75rem;
+  background: #fffef9;
+  color: var(--ink, #1d2a22);
+}
+
+.group-guide h3 {
+  margin: 0 0 .65rem;
+  color: var(--moss, #487c35);
+}
+
+.group-guide p {
+  margin: 0 0 .75rem;
+  line-height: 1.45;
+}
+
+.group-guide p:last-child { margin-bottom: 0; }
+
+.group-guide .guide-source {
+  padding-top: .7rem;
+  border-top: 1px solid var(--line, #d7d8c7);
+  color: #59665b;
+  font-size: .9rem;
+}
 .mycodb-mini-link:hover,
 .mycodb-mini-link:focus-visible{
   color:var(--ink);
@@ -51,6 +80,10 @@
 .result-name{
   margin-bottom:0;
   line-height:1.08;
+  font-weight:400;
+}
+.result-name.has-guide{
+  font-weight:850;
 }
 .mycodb-mini-link{
   margin:0 .28rem 0 0;
