@@ -11,6 +11,6 @@ const terrainKey = {
   status: 'préparation',
   start: null,
   questions: {},
-  /* Les familles et clés d’espèces seront partagées avec le parcours sporée. */
+  /* Les groupes et leurs fiches sont partagés avec le parcours par la sporée. */
   sharedResults: terminals
 };

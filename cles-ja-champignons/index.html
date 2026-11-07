@@ -41,7 +41,7 @@
 
         <aside class="result-panel">
           <p class="eyebrow">Résultats possibles</p>
-          <h2><span id="count">0</span> groupe<span id="plural">s</span></h2>
+          <h2><span id="count">0</span> <span id="result-kind">groupe</span><span id="plural">s</span></h2>
           <p id="status" class="status"></p>
           <div id="results" class="results"></div>
         </aside>
@@ -53,18 +53,26 @@
         <div id="key-table" class="key-table"></div>
       </section>
     </main>
-    <script src="app.js"></script>
-    <script src="couleur.js"></script>
-    <script src="noir.js"></script>
+    <script src="app.js?v=20261107-agarics-sans-mycodb-apres-mycene"></script>
+    <script src="couleur.js?v=20261107-paxille"></script>
+    <script src="noir.js?v=20261107-psalliota"></script>
     <script src="terrain.js"></script>
     <script src="terrain-agarics.js"></script>
-    <script src="chanterelles.js"></script>
-    <script src="amanites.js"></script>
-    <script src="lepiotes.js"></script>
-    <script src="species-notes.js"></script>
-    <script src="scientific-names.js"></script>
-    <script src="mycodb-results.js"></script>
+    <script src="bolets.js?v=20261107-bolets-16"></script>
+    <!-- Le paramètre de version évite qu'une ancienne fiche administrée reste en cache. -->
+    <script src="group-guides-data.js?v=20261107-photos"></script>
     <script src="group-guides.js"></script>
-    <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./service-worker.js');}</script>
+    <script>
+      const adminMode = new URLSearchParams(location.search).get('admin') === '1';
+      if ('serviceWorker' in navigator) {
+        if (adminMode) navigator.serviceWorker.getRegistrations().then(registrations => Promise.all(registrations.map(registration => registration.unregister()))).then(() => {
+          if (!sessionStorage.getItem('ja-admin-without-cache')) {
+            sessionStorage.setItem('ja-admin-without-cache', '1');
+            location.reload();
+          }
+        });
+        else navigator.serviceWorker.register('./service-worker.js?v=53');
+      }
+    </script>
   </body>
 </html>

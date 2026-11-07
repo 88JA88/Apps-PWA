@@ -1,25 +1,13 @@
-/*
- * Fichier maître des fiches de groupes.
- * Les textes sont fournis et validés par l’administrateur, puis embarqués dans
- * l’application afin d’être consultables sans connexion.
- */
-const groupGuides = {
-  CORTINAIRE: {
-    title: 'Cortinaires — à rejeter',
-    paragraphs: [
-      'Rejeter les cortinaires à chapeau roux, brun orangé ou fauve, souvent velouté ou fibrilleux, avec des lames espacées devenant rouille : ces caractères évoquent notamment le Cortinaire couleur de rocou (Cortinarius orellanus) ou le Cortinaire très joli (C. rubellus/speciosissimus), responsables du syndrome orellanien. Celui-ci peut provoquer une grave atteinte rénale, parfois plusieurs jours après l’ingestion.',
-      'D’autres cortinaires sont également toxiques. <strong>Tout cortinaire non identifié avec certitude est donc à écarter.</strong>',
-      'Le Muséum national d’Histoire naturelle décrit les deux espèces dangereuses comme brun-roux, à chapeau d’apparence feutrée. MycoDB donne pour C. orellanus des lames espacées, orangées puis rouille, et signale les cortinaires de couleurs proches comme risque de confusion. L’Anses indique que le syndrome orellanien peut entraîner une atteinte rénale apparaissant jusqu’à 20 jours après l’ingestion.',
-      '<strong>Je retiendrais dans mon panier :</strong><br>Cortinarius violaceus Lin. ex Fr.<br>Nom vulgaire : <strong>Cortinaire violet</strong>',
-      'Cet Inoloma, assez isolé dans la classification, se rencontre assez rarement dans les forêts feuillues, surtout sous bouleaux, et aussi sous conifères (sapins), sur des sols plus ou moins calcaires, en terrain pas trop sec, à la fin de l’été et en automne. Il paraît manquer dans certaines régions.',
-      'Il est uniformément coloré d’un magnifique violet intense et sombre, qui tire dans la vieillesse sur le noirâtre. Seules les lamelles, en se couvrant de spores, perdent ces teintes pour devenir brun ferrugineux ou rouillées à maturité.',
-      'Le chapeau (6–15 cm) est convexe, parfois plus ou moins mamelonné, très opaque, très sec, intensément velouté par de petites masses pelucheuses, déjà distinctes à l’œil nu. Le pied est volumineux et très élevé (8–10 × 1–3 cm), si bien que, comme il se renfle progressivement de haut en bas en un gros bulbe en massue, sa base, sur les jeunes exemplaires, est plus large que le chapeau encore hémisphérique. La surface est d’abord finement veloutée, puis très fibrilleuse ; la cortine est violette.',
-      'La chair est tendre, puis molle, assez flasque, violette, marbrée et blanchissante, sans odeur nette. Les lamelles sont peu serrées, épaisses, adnées-uncinées, un peu veinées sur les faces.',
-      'Spores : brun ferrugineux, 11–14 × 7–9 µ, ovoïdes, un peu en amande, verruqueuses. Cystides en fuseau, couvrant toute l’arête, éparses sur les faces. Cuticule filamenteuse, à hyphes remplies d’un suc violet.',
-      'Cette belle espèce, impossible à méconnaître à cause de sa couleur et du magnifique velouté du chapeau, est comestible, mais malheureusement peu savoureuse.'
-    ]
-  }
-};
+/* Affichage des fiches de groupes et de leur administration locale. */
+const groupGuides = window.GROUP_GUIDES || {};
+const isLocalHost = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
+const isAdminMode = isLocalHost && new URLSearchParams(window.location.search).get('admin') === '1';
+let adminMessage = '';
+let availablePhotos = [];
+
+const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+}[char]));
 
 Object.entries(groupGuides).forEach(([id, guide]) => {
   if (!terminals[id]) return;
@@ -30,6 +18,58 @@ Object.entries(groupGuides).forEach(([id, guide]) => {
   });
   nodes[`fiche-${id.toLowerCase()}`] = { guide, answers: [] };
 });
+
+function guidePhotos(guide) {
+  if (Array.isArray(guide.photos)) return guide.photos;
+  return guide.photo?.src ? [guide.photo] : [];
+}
+
+function imageBlock(guide) {
+  const photos = guidePhotos(guide);
+  if (!photos.length) return isAdminMode
+    ? `<figure class="group-photo group-photo-empty"><div class="photo-placeholder">Aucune photo n’est encore choisie pour cette fiche.</div></figure>`
+    : '';
+  return `<div class="group-photo-gallery">${photos.map((photo, index) => {
+  const savedWidth = Number(photo?.width);
+  const widthStyle = Number.isFinite(savedWidth) && savedWidth >= 180 ? ` style="--photo-width: ${Math.round(savedWidth)}px"` : '';
+  const content = photo?.src
+    ? `<img src="${escapeHtml(photo.src)}" alt="${escapeHtml(photo.alt || '')}">`
+    : `<div class="photo-placeholder">Photo à ajouter</div>`;
+  const dropZone = isAdminMode
+    ? `<div class="photo-dropzone" data-photo-index="${index}"${widthStyle}>${content}<span class="photo-resize-handle" data-photo-resize title="Redimensionner la photo" aria-label="Redimensionner la photo">↗↙</span></div>`
+    : content;
+  return `<figure class="group-photo${photo?.src ? '' : ' group-photo-empty'}"${widthStyle}>${dropZone}<figcaption>${escapeHtml(photo?.caption || 'Légende de la photo à renseigner.')}</figcaption></figure>`;
+  }).join('')}</div>`;
+}
+
+function adminBlock(id, guide) {
+  if (isAdminMode) {
+    return `<section class="admin-editor" aria-label="Administration de cette fiche">
+      <h4>Modifier cette fiche</h4>
+      <p class="admin-explanation">Ces modifications sont enregistrées seulement dans le fichier maître local. Elles ne seront visibles publiquement qu’après votre publication.</p>
+      <form id="guide-editor" data-guide-id="${escapeHtml(id)}">
+        <label>Titre de la fiche<input id="guide-title" type="text" value="${escapeHtml(guide.title)}"></label>
+        <label>Texte de la fiche<textarea id="guide-paragraphs" rows="18">${escapeHtml(guide.paragraphs.join('\n\n'))}</textarea></label>
+        <div class="photo-fields">${guidePhotos(guide).map((photo, index) => `<section data-photo-fields data-photo-index="${index}">
+          <strong>Photo ${index + 1}</strong>
+          <label>Texte alternatif<input data-photo-alt type="text" value="${escapeHtml(photo.alt || '')}" placeholder="Description de l’image"></label>
+          <label>Légende de la photo<input data-photo-caption type="text" value="${escapeHtml(photo.caption || '')}" placeholder="Légende affichée sous l’image"></label>
+          <input data-photo-width type="hidden" value="${escapeHtml(photo.width || '')}">
+          <button class="remove-photo" data-remove-photo data-photo-index="${index}" type="button">Enlever cette photo de la fiche</button>
+        </section>`).join('')}</div>
+        <section class="photo-library" aria-label="Photos du dossier PHOTOS">
+          <h5>Photos du dossier PHOTOS</h5>
+          <p>Choisissez une photo à ajouter à cette fiche. Les photos déjà choisies restent visibles au-dessus.</p>
+          <div id="available-photos" class="available-photos"><p class="muted">Chargement des photos…</p></div>
+        </section>
+        <div class="admin-actions"><button class="secondary" type="submit">Enregistrer la fiche</button></div>
+        <p id="admin-feedback" class="admin-feedback" aria-live="polite">${escapeHtml(adminMessage)}</p>
+      </form>
+    </section>`;
+  }
+  if (isLocalHost) return `<button class="add-photo" data-enter-admin type="button">Modifier cette fiche</button>`;
+  return '';
+}
 
 const renderBeforeGroupGuides = render;
 render = function () {
@@ -47,8 +87,153 @@ render = function () {
   el('help').textContent = 'Texte consultable hors connexion.';
   el('unknown').hidden = true;
   el('status').textContent = '';
-  el('answers').innerHTML = `<article class="group-guide"><h3>${guide.title}</h3>${guide.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}${guide.source ? `<p class="guide-source">${guide.source}</p>` : ''}</article>`;
+  const id = Object.entries(groupGuides).find(([, value]) => value === guide)?.[0] || '';
+  el('answers').innerHTML = `<article class="group-guide"><h3>${guide.title}</h3>${guide.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}${imageBlock(guide)}${adminBlock(id, guide)}${guide.source ? `<p class="guide-source">${guide.source}</p>` : ''}</article>`;
+  if (isAdminMode && id) renderAvailablePhotos(id);
 };
+
+async function postAdmin(path, payload) {
+  const response = await fetch(path, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(body.error || 'Enregistrement impossible.');
+  return body;
+}
+
+function feedback(message) {
+  adminMessage = message;
+  const node = document.querySelector('#admin-feedback');
+  if (node) node.textContent = message;
+}
+
+function photoTitle(photo) {
+  return String(photo.name || '').replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
+}
+
+async function renderAvailablePhotos(id) {
+  const container = document.querySelector('#available-photos');
+  if (!container) return;
+  try {
+    if (!availablePhotos.length) {
+      const response = await fetch('./api/admin/photos', { cache: 'no-store' });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.error || 'Lecture du dossier PHOTOS impossible.');
+      availablePhotos = Array.isArray(body.photos) ? body.photos : [];
+    }
+    const selected = new Set(guidePhotos(groupGuides[id]).map(photo => photo.src));
+    container.innerHTML = availablePhotos.length
+      ? availablePhotos.map(photo => {
+        const selectedHere = selected.has(photo.src);
+        return `<article class="available-photo"><img src="${escapeHtml(photo.src)}" alt=""><span>${escapeHtml(photoTitle(photo))}</span><button type="button" data-select-photo data-photo-src="${escapeHtml(photo.src)}" data-photo-name="${escapeHtml(photo.name)}"${selectedHere ? ' disabled' : ''}>${selectedHere ? 'Déjà dans la fiche' : 'Ajouter à la fiche'}</button></article>`;
+      }).join('')
+      : '<p class="muted">Le dossier PHOTOS ne contient encore aucune image.</p>';
+  } catch (error) {
+    container.innerHTML = `<p class="muted">${escapeHtml(error.message)}</p>`;
+  }
+}
+
+document.addEventListener('click', event => {
+  if (event.target.closest('[data-enter-admin]')) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('admin', '1');
+    window.location.href = url.toString();
+  }
+  const removeButton = event.target.closest('[data-remove-photo]');
+  if (isAdminMode && removeButton) {
+    const id = document.querySelector('#guide-editor')?.dataset.guideId;
+    const index = Number(removeButton.dataset.photoIndex);
+    if (!id || !Number.isInteger(index)) return;
+    const guide = guideFromEditor(id);
+    guide.photos.splice(index, 1);
+    feedback('Retrait de la photo…');
+    postAdmin('./api/admin/save-guide', { id, guide }).then(result => {
+      Object.assign(groupGuides[id], result.guide);
+      adminMessage = 'Photo retirée de la fiche. Le fichier d’origine reste conservé localement.';
+      render();
+    }).catch(error => feedback(error.message));
+    return;
+  }
+  const selectButton = event.target.closest('[data-select-photo]');
+  if (!isAdminMode || !selectButton || selectButton.disabled) return;
+  const id = document.querySelector('#guide-editor')?.dataset.guideId;
+  if (!id) return;
+  const guide = guideFromEditor(id);
+  const src = selectButton.dataset.photoSrc;
+  if (guide.photos.some(photo => photo.src === src)) return;
+  guide.photos.push({ src, alt: photoTitle({ name: selectButton.dataset.photoName }), caption: '' });
+  feedback('Ajout de la photo à la fiche…');
+  postAdmin('./api/admin/save-guide', { id, guide }).then(result => {
+    Object.assign(groupGuides[id], result.guide);
+    adminMessage = 'Photo ajoutée à la fiche. Le fichier reste dans le dossier PHOTOS.';
+    render();
+  }).catch(error => feedback(error.message));
+});
+
+document.addEventListener('pointerdown', event => {
+  const handle = event.target.closest?.('[data-photo-resize]');
+  if (!isAdminMode || !handle) return;
+  event.preventDefault();
+  event.stopPropagation();
+  const zone = handle.closest('[data-photo-dropzone]');
+  const article = zone?.closest('.group-guide');
+  if (!zone || !article) return;
+  const startX = event.clientX;
+  const startWidth = zone.getBoundingClientRect().width;
+  const maxWidth = article.getBoundingClientRect().width;
+  const resize = move => {
+    const width = Math.round(Math.min(maxWidth, Math.max(180, startWidth + move.clientX - startX)));
+    zone.style.setProperty('--photo-width', `${width}px`);
+    const index = zone.dataset.photoIndex;
+    document.querySelector(`[data-photo-fields][data-photo-index="${index}"] [data-photo-width]`)?.setAttribute('value', width);
+  };
+  const stop = () => {
+    window.removeEventListener('pointermove', resize);
+    window.removeEventListener('pointerup', stop);
+    feedback('Taille modifiée : cliquez sur « Enregistrer la fiche » pour la conserver.');
+  };
+  window.addEventListener('pointermove', resize);
+  window.addEventListener('pointerup', stop, { once: true });
+});
+
+function guideFromEditor(id) {
+  const current = groupGuides[id];
+  const paragraphs = el('guide-paragraphs').value.split(/\n\s*\n/).map(value => value.trim()).filter(Boolean);
+  const photos = guidePhotos(current).map((photo, index) => {
+    const fields = document.querySelector(`[data-photo-fields][data-photo-index="${index}"]`);
+    return {
+      ...photo,
+      alt: fields?.querySelector('[data-photo-alt]')?.value.trim() || '',
+      caption: fields?.querySelector('[data-photo-caption]')?.value.trim() || '',
+      width: Number(fields?.querySelector('[data-photo-width]')?.value) || undefined
+    };
+  });
+  const guide = { ...current, title: el('guide-title').value.trim() || current.title, paragraphs, photos };
+  delete guide.photo;
+  return guide;
+}
+
+document.addEventListener('submit', async event => {
+  if (!isAdminMode || event.target.id !== 'guide-editor') return;
+  event.preventDefault();
+  const id = event.target.dataset.guideId;
+  const guide = guideFromEditor(id);
+  if (!guide.paragraphs.length) {
+    feedback('Le texte de la fiche ne peut pas être vide.');
+    return;
+  }
+  feedback('Enregistrement de la fiche…');
+  try {
+    const result = await postAdmin('./api/admin/save-guide', { id, guide });
+    Object.assign(groupGuides[id], result.guide);
+    adminMessage = 'Fiche enregistrée dans le fichier maître local.';
+    render();
+  } catch (error) {
+    feedback(error.message);
+  }
+});
 
 renderTable();
 render();

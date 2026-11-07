@@ -5,7 +5,7 @@ Object.assign(terminals['AGARICS-SOMBRES'], {
   nextLabel:'Ouvrir la clé des Agarics à sporée noire, noirâtre ou brun pourpre'
 });
 Object.assign(terminals, {
-  PSALLIOTE:{name:'PSALLIOTE',mycodb:'Agaricus'}, STROPHAIRE:{name:'STROPHAIRE',mycodb:'Stropharia'},
+  PSALLIOTE:{name:'PSALLIOTE',mycodb:'Psalliota'}, STROPHAIRE:{name:'STROPHAIRE',mycodb:'Stropharia'},
   PANÉOLE:{name:'PANÉOLE',mycodb:'Panaeolus'}, HYPHOLOME:{name:'HYPHOLOME',mycodb:'Hypholoma'},
   GOMPHIDE:{name:'GOMPHIDE',mycodb:'Gomphidius'}, COPRIN:{name:'COPRIN',mycodb:'Coprinus'}
 });

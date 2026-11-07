@@ -6,7 +6,7 @@ Object.assign(terminals['AGARICS-COULEUR'], {
 });
 Object.assign(terminals, {
   VOLVAIRE:{name:'VOLVAIRE',mycodb:'Volvariella'}, PHOLIOTE:{name:'PHOLIOTE',mycodb:'Pholiota'},
-  PLUTÉE:{name:'PLUTÉE',mycodb:'Pluteus'}, PAXILLE:{name:'PAXILLE',mycodb:'Paxillus'},
+  PLUTÉE:{name:'PLUTÉE',mycodb:'Pluteus'}, PAXILLE:{name:'PAXILLE',mycodb:'Paxille'},
   CORTINAIRE:{name:'CORTINAIRE',mycodb:'Cortinarius'}, FLAMMULE:{name:'FLAMMULE',mycodb:'Pholiota'},
   HÉBÉLOME:{name:'HÉBÉLOME',mycodb:'Hebeloma'}, CLITOPILE:{name:'CLITOPILE',mycodb:'Clitopilus'},
   INOCYBE:{name:'INOCYBE',mycodb:'Inocybe'}, ENTOLOME:{name:'ENTOLOME',mycodb:'Entoloma'}
