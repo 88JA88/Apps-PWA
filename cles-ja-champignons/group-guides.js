@@ -3,7 +3,6 @@ const groupGuides = window.GROUP_GUIDES || {};
 const isLocalHost = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
 const isAdminMode = isLocalHost && new URLSearchParams(window.location.search).get('admin') === '1';
 let adminMessage = '';
-let availablePhotos = [];
 
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -18,6 +17,27 @@ Object.entries(groupGuides).forEach(([id, guide]) => {
   });
   nodes[`fiche-${id.toLowerCase()}`] = { guide, answers: [] };
 });
+
+/* En administration seulement, chaque groupe encore sans fiche peut être créé au clic.
+   Rien n'est écrit dans le fichier maître tant que l'administrateur ne l'enregistre pas. */
+if (isAdminMode) {
+  Object.entries(terminals).forEach(([id, terminal]) => {
+    if (groupGuides[id] || terminal.next) return;
+    const guide = {
+      title: terminal.name.charAt(0) + terminal.name.slice(1).toLocaleLowerCase('fr-FR'),
+      paragraphs: [''],
+      photos: []
+    };
+    groupGuides[id] = guide;
+    Object.assign(terminal, {
+      next: `fiche-${id.toLowerCase()}`,
+      nextLabel: `Créer la fiche ${terminal.name.toLocaleLowerCase('fr-FR')}`,
+      guide: true,
+      draftGuide: true
+    });
+    nodes[`fiche-${id.toLowerCase()}`] = { guide, answers: [] };
+  });
+}
 
 function guidePhotos(guide) {
   if (Array.isArray(guide.photos)) return guide.photos;
@@ -46,7 +66,7 @@ function adminBlock(id, guide) {
   if (isAdminMode) {
     return `<section class="admin-editor" aria-label="Administration de cette fiche">
       <h4>Modifier cette fiche</h4>
-      <p class="admin-explanation">Ces modifications sont enregistrées seulement dans le fichier maître local. Elles ne seront visibles publiquement qu’après votre publication.</p>
+      <p class="admin-explanation">${terminals[id]?.draftGuide ? 'Cette fiche est nouvelle : renseignez au moins son texte, puis enregistrez-la dans le fichier maître local.' : 'Ces modifications sont enregistrées seulement dans le fichier maître local. Elles ne seront visibles publiquement qu’après votre publication.'}</p>
       <form id="guide-editor" data-guide-id="${escapeHtml(id)}">
         <label>Titre de la fiche<input id="guide-title" type="text" value="${escapeHtml(guide.title)}"></label>
         <label>Texte de la fiche<textarea id="guide-paragraphs" rows="18">${escapeHtml(guide.paragraphs.join('\n\n'))}</textarea></label>
@@ -57,10 +77,10 @@ function adminBlock(id, guide) {
           <input data-photo-width type="hidden" value="${escapeHtml(photo.width || '')}">
           <button class="remove-photo" data-remove-photo data-photo-index="${index}" type="button">Enlever cette photo de la fiche</button>
         </section>`).join('')}</div>
-        <section class="photo-library" aria-label="Photos du dossier PHOTOS">
-          <h5>Photos du dossier PHOTOS</h5>
-          <p>Choisissez une photo à ajouter à cette fiche. Les photos déjà choisies restent visibles au-dessus.</p>
-          <div id="available-photos" class="available-photos"><p class="muted">Chargement des photos…</p></div>
+        <section class="photo-library" aria-label="Ajouter une photo">
+          <h5>Ajouter une photo</h5>
+          <p>Les photos déjà associées restent visibles au-dessus. Cliquez ci-dessous pour choisir une image dans le dossier de votre choix ; elle sera copiée dans <code>PHOTOS</code> sans effacer le fichier d’origine.</p>
+          <label class="import-photo-button">Choisir une photo…<input data-import-photo type="file" accept="image/jpeg,image/png,image/webp" hidden></label>
         </section>
         <div class="admin-actions"><button class="secondary" type="submit">Enregistrer la fiche</button></div>
         <p id="admin-feedback" class="admin-feedback" aria-live="polite">${escapeHtml(adminMessage)}</p>
@@ -89,7 +109,6 @@ render = function () {
   el('status').textContent = '';
   const id = Object.entries(groupGuides).find(([, value]) => value === guide)?.[0] || '';
   el('answers').innerHTML = `<article class="group-guide"><h3>${guide.title}</h3>${guide.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('')}${imageBlock(guide)}${adminBlock(id, guide)}${guide.source ? `<p class="guide-source">${guide.source}</p>` : ''}</article>`;
-  if (isAdminMode && id) renderAvailablePhotos(id);
 };
 
 async function postAdmin(path, payload) {
@@ -113,28 +132,6 @@ function photoTitle(photo) {
   return String(photo.name || '').replace(/\.[^.]+$/, '').replace(/[-_]+/g, ' ');
 }
 
-async function renderAvailablePhotos(id) {
-  const container = document.querySelector('#available-photos');
-  if (!container) return;
-  try {
-    if (!availablePhotos.length) {
-      const response = await fetch('./api/admin/photos', { cache: 'no-store' });
-      const body = await response.json();
-      if (!response.ok) throw new Error(body.error || 'Lecture du dossier PHOTOS impossible.');
-      availablePhotos = Array.isArray(body.photos) ? body.photos : [];
-    }
-    const selected = new Set(guidePhotos(groupGuides[id]).map(photo => photo.src));
-    container.innerHTML = availablePhotos.length
-      ? availablePhotos.map(photo => {
-        const selectedHere = selected.has(photo.src);
-        return `<article class="available-photo"><img src="${escapeHtml(photo.src)}" alt=""><span>${escapeHtml(photoTitle(photo))}</span><button type="button" data-select-photo data-photo-src="${escapeHtml(photo.src)}" data-photo-name="${escapeHtml(photo.name)}"${selectedHere ? ' disabled' : ''}>${selectedHere ? 'Déjà dans la fiche' : 'Ajouter à la fiche'}</button></article>`;
-      }).join('')
-      : '<p class="muted">Le dossier PHOTOS ne contient encore aucune image.</p>';
-  } catch (error) {
-    container.innerHTML = `<p class="muted">${escapeHtml(error.message)}</p>`;
-  }
-}
-
 document.addEventListener('click', event => {
   if (event.target.closest('[data-enter-admin]')) {
     const url = new URL(window.location.href);
@@ -156,20 +153,42 @@ document.addEventListener('click', event => {
     }).catch(error => feedback(error.message));
     return;
   }
-  const selectButton = event.target.closest('[data-select-photo]');
-  if (!isAdminMode || !selectButton || selectButton.disabled) return;
+});
+
+function fileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => resolve(reader.result));
+    reader.addEventListener('error', () => reject(new Error('Lecture de la photo impossible.')));
+    reader.readAsDataURL(file);
+  });
+}
+
+document.addEventListener('change', async event => {
+  const input = event.target.closest?.('[data-import-photo]');
+  if (!isAdminMode || !input?.files?.length) return;
   const id = document.querySelector('#guide-editor')?.dataset.guideId;
-  if (!id) return;
-  const guide = guideFromEditor(id);
-  const src = selectButton.dataset.photoSrc;
-  if (guide.photos.some(photo => photo.src === src)) return;
-  guide.photos.push({ src, alt: photoTitle({ name: selectButton.dataset.photoName }), caption: '' });
-  feedback('Ajout de la photo à la fiche…');
-  postAdmin('./api/admin/save-guide', { id, guide }).then(result => {
+  const file = input.files[0];
+  input.value = '';
+  if (!id || !file) return;
+  if (file.size > 12 * 1024 * 1024) {
+    feedback('La photo dépasse 12 Mo.');
+    return;
+  }
+  try {
+    feedback('Ajout de la photo à la fiche…');
+    const body = await postAdmin('./api/admin/import-photo', { filename: file.name, data: await fileAsDataUrl(file) });
+    const guide = guideFromEditor(id);
+    if (!guide.photos.some(photo => photo.src === body.photo.src)) {
+      guide.photos.push({ src: body.photo.src, alt: photoTitle(body.photo), caption: '' });
+    }
+    const result = await postAdmin('./api/admin/save-guide', { id, guide });
     Object.assign(groupGuides[id], result.guide);
-    adminMessage = 'Photo ajoutée à la fiche. Le fichier reste dans le dossier PHOTOS.';
+    adminMessage = 'Photo ajoutée à la fiche. Le fichier d’origine reste inchangé.';
     render();
-  }).catch(error => feedback(error.message));
+  } catch (error) {
+    feedback(error.message);
+  }
 });
 
 document.addEventListener('pointerdown', event => {
@@ -228,6 +247,7 @@ document.addEventListener('submit', async event => {
   try {
     const result = await postAdmin('./api/admin/save-guide', { id, guide });
     Object.assign(groupGuides[id], result.guide);
+    if (terminals[id]) delete terminals[id].draftGuide;
     adminMessage = 'Fiche enregistrée dans le fichier maître local.';
     render();
   } catch (error) {

@@ -53,7 +53,7 @@
         <div id="key-table" class="key-table"></div>
       </section>
     </main>
-    <script src="app.js?v=20261107-agarics-sans-mycodb-apres-mycene"></script>
+    <script src="app.js?v=20261107-grisette"></script>
     <script src="couleur.js?v=20261107-paxille"></script>
     <script src="noir.js?v=20261107-psalliota"></script>
     <script src="terrain.js"></script>
@@ -61,7 +61,7 @@
     <script src="bolets.js?v=20261107-bolets-16"></script>
     <!-- Le paramètre de version évite qu'une ancienne fiche administrée reste en cache. -->
     <script src="group-guides-data.js?v=20261107-photos"></script>
-    <script src="group-guides.js"></script>
+    <script src="group-guides.js?v=20261107-admin-fiches"></script>
     <script>
       const adminMode = new URLSearchParams(location.search).get('admin') === '1';
       if ('serviceWorker' in navigator) {
@@ -71,7 +71,7 @@
             location.reload();
           }
         });
-        else navigator.serviceWorker.register('./service-worker.js?v=53');
+        else navigator.serviceWorker.register('./service-worker.js?v=54');
       }
     </script>
   </body>
