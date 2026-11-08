@@ -89,9 +89,9 @@ class AdminHandler(SimpleHTTPRequestHandler):
         guide = data.get('guide')
         if not isinstance(guide, dict) or not isinstance(guide.get('paragraphs'), list):
             raise ValueError('Fiche invalide.')
+        if not isinstance(identifier, str) or not re.fullmatch(r'[A-ZÀÂÇÉÈÊËÎÏÔÖÙÛÜ0-9-]+', identifier):
+            raise ValueError('Identifiant de fiche invalide.')
         guides = read_guides()
-        if identifier not in guides:
-            raise ValueError('Fiche inconnue.')
         clean = {
             'title': str(guide.get('title', '')).strip(),
             'paragraphs': [str(text).strip() for text in guide['paragraphs'] if str(text).strip()]
