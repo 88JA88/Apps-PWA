@@ -18,13 +18,33 @@ window.GROUP_GUIDES = {
       {
         "src": "PHOTOS/Cortinaire violet.jpg",
         "alt": "Cortinaire violet",
-        "caption": "Cortinaire violet"
+        "caption": "Cortinaire violet (comestible ... sans plus)"
       },
       {
         "src": "PHOTOS/Cortinaire Orellanus.jpg",
         "alt": "Cortinaire couleur de rocou",
-        "caption": "C. Orellanus"
+        "caption": "C. Orellanus (Mortel ! )"
       }
     ]
+  },
+  "AMANITE": {
+    "title": "Amanite",
+    "paragraphs": [
+      "<strong>1. Espèces à rejeter :</strong>",
+      "<strong>Amanite phalloïde (Amanita phalloides, mortelle) </strong>: chapeau souvent verdâtre ou jaune olive, parfois gris, brun ou presque blanc ; lames blanches ; anneau blanc ; volve blanche en sac à la base. Le pied peut présenter des marbrures verdâtres. La couleur du chapeau étant variable, elle ne suffit pas à écarter cette espèce.",
+      "<a href=\"https://www.anses.fr/fr/system/files/BIORISK2014sa0232Fi.pdf?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">A. Phalloîde</a>",
+      "•\t<strong>Amanites printanière et vireuse (A. verna, A. virosa, mortelles)</strong> : champignons blancs, à lames blanches, anneau et volve en sac. La vireuse a souvent un chapeau irrégulier et un pied fibrilleux ; la printanière est généralement plus lisse. Ces différences ne permettent pas toujours de les distinguer sûrement d’autres amanites ou champignons blancs.",
+      "<a href=\"https://www.sfmu.org/toxin/CHAMPIGN/CHPGMONO/AVERNA0.HTM?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">A. Verna</a>",
+      "•\t<strong>Amanite panthère (A. pantherina, toxique) :</strong> chapeau brun à brun gris, souvent couvert de flocons blancs ; lames blanches ; anneau blanc ; pied bulbeux avec des bourrelets concentriques, hélicoïdaux à la base. Les flocons peuvent disparaître avec la pluie.",
+      "<a href=\"https://www.smnf.fr/wp-content/Photos_SMNF/Photos_SMNF_A/Amanita_pantherina.htm?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">A. pantherina</a>",
+      "•\t<strong>Amanite tue-mouches (A. muscaria, toxique) </strong>: chapeau rouge à orangé, habituellement couvert de verrues blanches ; lames blanches ; anneau blanc ; base bulbeuse avec des restes de volve en bourrelets. La pluie peut faire disparaître les verrues et décolorer le chapeau.",
+      "<a href=\"https://www.sfmu.org/toxin/CHAMPIGN/CHPGMONO/ATUEM0.HTM?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">A. muscaria</a>",
+      "<strong>2) Je garderai dans mon panier</strong>\nJe ne garderai que les exemplaires réunissant les caractères de l’une des deux espèces présentées ci-dessous.",
+      "<strong>Amanite des Césars (A. caesarea)</strong> : chapeau orange ; lames, pied et anneau jaunes ; volve blanche, épaisse et en sac. La distinction avec l’amanite tue-mouches repose surtout sur les lames et le pied jaunes chez l’amanite des Césars, blancs chez la tue-mouches. Ne pas garder un jeune spécimen encore enfermé dans sa volve si ses caractères ne sont pas clairement visibles.",
+      "<a href=\"https://www.smnf.fr/wp-content/Photos_SMNF/Photos_SMNF_A/Amanita_caesarea.htm?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">A. Césars</a>",
+      "•\t<strong>Amanite rougissante (A. rubescens)</strong> : chapeau brunâtre à rosé, souvent marqué de plaques grisâtres ; lames blanches ; anneau blanc, strié sur sa face supérieure ; base du pied bulbeuse, sans volve en sac. La chair rougit ou se teinte de rose vineux lorsqu’elle est coupée ou blessée. Ce rougissement aide à la distinguer de l’amanite panthère, mais il faut vérifier l’ensemble des caractères. Elle est toxique crue ou insuffisamment cuite.",
+      "<a href=\"https://www.smnf.fr/wp-content/Photos_SMNF/Photos_SMNF_A/Amanita_rubescens.htm?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">Golmotte</a>"
+    ],
+    "photos": []
   }
 };
