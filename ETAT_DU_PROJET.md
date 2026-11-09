@@ -97,3 +97,11 @@
 - Le 4 novembre 2026, la transcription locale de la Clé Agarics a été corrigée : « Sporée noire (parfois sans anneau) » devient « Sporée noire », conformément au fichier de référence. Un bouton « Actualiser » a également été ajouté dans l’en-tête pour recharger l’application.
 - Le cache hors connexion de la Clé Agarics passe à `cle-agarics-v3` afin que les applications déjà installées reçoivent ces fichiers actualisés.
 - Les références aux feuilles de style et au script de la Clé Agarics sont versionnées afin d’éviter qu’une ancienne cache PWA ne serve la transcription précédente.
+
+
+## Mise à jour — Clés JA-Champignons
+
+- Le 9 novembre 2026, l’application `cles-ja-champignons/` a été actualisée avec les dernières fiches de groupes.
+- Les boutons « Retour » et « Recommencer » sont placés sous « Résultats possibles » et accompagnent aussi l’en-tête « Fiche de groupe ».
+- Leur présentation est un fond blanc avec un encadrement vert épais.
+- Le cache de l’application passe à `cles-ja-champignons-v66` pour diffuser cette version aux installations existantes.

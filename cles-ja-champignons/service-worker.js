@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cles-ja-champignons-v65';
+const CACHE_NAME = 'cles-ja-champignons-v66';
 const APP_FILES = ['./', './index.html', './styles.css', './overrides.css', './app.js?v=20261107-grisette', './couleur.js?v=20261107-paxille', './noir.js?v=20261107-psalliota', './terrain.js', './terrain-agarics.js', './bolets.js?v=20261107-bolets-16', './group-guides-data.js?v=20261108-fiches', './group-guides.js?v=20261107-admin-fiches', './PHOTOS/Cortinaire%20violet.jpg', './PHOTOS/Cortinaire%20Orellanus.jpg', './PHOTOS/Cortinaires%20(BON).jpg', './PHOTOS/cortinaire.jpg', './manifest.webmanifest', './assets/logo-ja-champignons.svg'];
 
 self.addEventListener('install', event => event.waitUntil(

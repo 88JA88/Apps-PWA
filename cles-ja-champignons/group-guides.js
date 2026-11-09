@@ -96,13 +96,16 @@ render = function () {
   renderBeforeGroupGuides();
   const guide = nodes[phase]?.guide;
   const resultPanel = document.querySelector('.result-panel');
+  const actions = document.querySelector('.result-actions');
   if (!guide) {
     resultPanel.hidden = false;
+    resultPanel.querySelector('.eyebrow').after(actions);
     return;
   }
 
   resultPanel.hidden = true;
   el('step').textContent = 'Fiche de groupe';
+  el('step').after(actions);
   el('question').textContent = guide.title;
   el('help').textContent = 'Texte consultable hors connexion.';
   el('unknown').hidden = true;

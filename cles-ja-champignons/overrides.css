@@ -1,12 +1,16 @@
 .secondary{
-  background:var(--moss);
-  color:#fff;
+  border:4px solid var(--moss);
+  background:#fff;
+  color:var(--moss);
 }
 .secondary:hover,
 .secondary:focus-visible{
-  background:#315d25;
-  color:#fff;
+  background:#f3f8ed;
+  color:var(--moss);
   outline:2px solid #315d25;
+}
+.result-actions{
+  margin:0 0 1rem;
 }
 .mycodb-mini-link{
   display:inline-block;

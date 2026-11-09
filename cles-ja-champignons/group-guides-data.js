@@ -80,5 +80,67 @@ window.GROUP_GUIDES = {
       "Limite pour la fiche : les noms « Clitocybe nébuleux » et surtout « Clitocybe orangé » ne garantissent pas une identification d’espèce. Garde les spécimens pour identification seulement si les caractères concordent ; sépare-les des autres récoltes."
     ],
     "photos": []
+  },
+  "LACTAIRE": {
+    "title": "Lactaire",
+    "paragraphs": [
+      "<strong>1. À rejeter\n\t•\tLactaire à toison (Lactarius torminosus, toxique)</strong> : chapeau rose à rose brique, zoné, avec une marge longtemps enroulée et couverte de poils laineux ; lait blanc, très âcre ; pousse sous les bouleaux. Il ne faut pas le confondre avec le lactaire délicieux, dont le chapeau est orange et le lait orange.",
+      "<a href=\"https://smartchampi.univ-rouen.fr/champignons/lactarius-torminosus.html?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">L torminosus</a>",
+      "<strong>2. Je garderai dans mon panier :",
+      "le Lactaire délicieux\n\t•\tLactaire délicieux (Lactarius deliciosus) </strong>: chapeau orange marqué de cercles concentriques ; lames orange ; lait orange à la cassure ; pied orange, souvent creusé de petites fossettes plus foncées. Il pousse sous les pins. Le lait et la chair peuvent verdir avec l’âge ou après blessure.",
+      "<a href=\"https://www.francini-mycologie.fr/MYCOLOGIE/LES_AUTRES_CHAMPIGNONS/Lactarius_deliciosus.html?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">L. délicieux</a>",
+      "<strong>Attention :</strong> plusieurs lactaires orangés se ressemblent. Pour cette fiche, garde seulement un exemplaire réunissant les caractères du lactaire délicieux ; ne déduis pas que les autres lactaires orangés sont comestibles."
+    ],
+    "photos": []
+  },
+  "TRICHOLOME": {
+    "title": "Tricholome",
+    "paragraphs": [
+      "<strong> 1. Espèces à rejeter\n\t•\tTricholome tigré (T. pardinum, toxique) :</strong>  gros champignon trapu ; chapeau gris pâle couvert de larges écailles gris foncé, évoquant des rayures ; pied robuste, lames blanchâtres. Son aspect écailleux le distingue des chapeaux fibrilleux des deux espèces que tu veux garder.",
+      "<a href=\"https://francini-mycologie.fr/LA_PAGE_DU_DEBUTANT/Tricholoma_pardinum.html?utm_source=chatgpt.com target=\"_blank\" rel=\"noopener\">T pardinum</a>",
+      "•\t<strong> Tricholome de Josserand (T. josserandii, toxique) </strong> : sosie problématique du prétentieux ; petit chapeau gris plutôt lisse, pied pouvant rosir à la base et odeur farineuse désagréable. La distinction est délicate : si l’exemplaire ne correspond pas nettement au prétentieux décrit ci-dessous, écarte-le.",
+      "<a href=\"https://www.francini-mycologie.fr/MYCOLOGIE/LES_AUTRES_CHAMPIGNONS/Tricholoma_josserandii.html?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">T Josserand</a>",
+      "•\t<strong> Tricholome équestre (T. equestre et espèces proches, dont T. auratum) : chapeau, lames et pied jaunes </strong> ; le chapeau peut être brunâtre au centre. Des intoxications avec atteinte musculaire grave, parfois mortelle, ont été associées à des consommations importantes et répétées. Les cas récents sont rares et la toxicité exacte du complexe fait encore débat, mais la vente de ces espèces reste interdite en France. À rejeter pour la consommation.",
+      "<a href=\"https://www.smnf.fr/wp-content/Photos_SMNF/Photos_SMNF_T/Tricholoma_equestre.htm?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">T Equestre</a>",
+      "<strong> 2. Je garderai dans mon panier\n\t•\tTricholome prétentieux (T. portentosum) </strong> : chapeau gris souvent nuancé de violet, parcouru de fines fibrilles radiales ; lames blanchâtres à jaunâtres ; pied blanc qui peut jaunir ; odeur farineuse.",
+      "<a href=\"https://francini-mycologie.fr/LA_PAGE_DU_DEBUTANT/Tricholoma_portentosum.html?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">T Prétentieux</a>",
+      "•\t</strong> Tricholome terreux ou grisé (T. terreum) </strong> : chapeau gris plus mat, fibrilleux ou finement pelucheux, sans tons jaunes marqués ; lames gris blanchâtre ; pied généralement blanc à gris pâle ; odeur faible, sans nette odeur de farine.",
+      "<a href=\"https://www.francini-mycologie.fr/LA_PAGE_DU_DEBUTANT/Tricholoma_terreum.html?utm_source=chatgpt.com\" target=\"_blank\" rel=\"noopener\">T terreux</a>",
+      "<strong> Pour les distinguer : le prétentieux présente souvent des reflets violacés et des traces jaunes, surtout aux lames ou au pied, </strong> avec une odeur farineuse. <strong> Le terreux reste plus uniformément gris </strong>et son odeur est discrète. Ces critères varient : si tu n’arrives pas à les réunir, garde le champignon pour identification et ne conclus pas à sa comestibilité sur la seule couleur grise."
+    ],
+    "photos": []
+  },
+  "LÉPIOTE": {
+    "title": "Lépiote",
+    "paragraphs": [
+      "<strong>1. À rejeter — attention aux petites lépiotes</strong>",
+      "Certaines petites lépiotes, notamment <strong>la Lépiote brun-incarnat (Lepiota brunneoincarnata) et la Lépiote de Josserand (L. josserandii), peuvent provoquer une intoxication mortelle</strong>. Elles sont petites, à lames blanches, avec un chapeau couvert d’écailles brun rosé à brun rougeâtre et un pied mince portant parfois une zone annulaire discrète. La Lépiote de Josserand peut avoir une odeur de mandarine, mais l’odeur et la couleur ne permettent pas de garantir l’identification. D’autres petites lépiotes sont également dangereuses.",
+      "<a href=\"https://smartchampi.univ-rouen.fr/champignons/lepiota-brunneoincarnata.html\" target=\"_blank\" rel=\"noopener\">L. brunnea</a>",
+      "Consigne de terrain : <strong>rejette toute petite lépiote</strong> et tout exemplaire douteux. La taille seule ne suffit pas à reconnaître la coulemelle : une jeune coulemelle peut encore avoir son chapeau fermé.",
+      "<strong>. Je garderai dans mon panier :",
+      "— la Coulemelle.",
+      "Je ne retiendrai que la Lépiote élevée (Macrolepiota procera),</strong> à soumettre ensuite à identification. Elle est généralement grande, avec un chapeau largement ouvert en parasol, couvert de grosses écailles brunes sur fond clair et souvent un mamelon central. <strong>Son pied est élancé et nettement chinée de brun, comme une peau de serpent</strong> ; <strong>son anneau est coulissant</strong> et épais Il faut retrouver plusieurs de ces caractères ensemble : aucun signe isolé ne suffit, et une confusion reste possible.",
+      "<a href=\"https://smartchampi.univ-rouen.fr/champignons/macrolepiota-procera.html\" target=\"_blank\" rel=\"noopener\">Lépiote élevée — Coulemelle</a>"
+    ],
+    "photos": []
+  },
+  "CHANTERELLE": {
+    "title": "Chanterelle",
+    "paragraphs": [
+      "<strong>1. À rejeter\nPour ce groupe, écarte les champignons qui ont de vraies lames fines</strong>, nombreuses et tranchantes, surtout s’ils poussent en touffes sur du bois : cela peut être une Omphalote (Omphalotus), toxique et non une Chanterelle.",
+      "<strong>La girolle et les chanterelles ont des plis épais, émoussés et souvent ramifiés sous le chapeau, qui se prolongent sur le pied</strong>. En cas de doute sur l’aspect des plis ou le lieu de pousse, ne garde pas le champignon.",
+      "<strong>2. Je garderai dans mon panier : </strong>",
+      "Je retiendrai les chanterelles à déterminer ensuite, notamment :",
+      "•\t<strong>Girolle (Cantharellus cibarius)</strong> : jaune, chapeau souvent irrégulier, plis épais et décurrents, odeur fruitée.",
+      "<a href=\"https://www.smbrc-chambery.fr/phototheque/cantharellus-cibarius-fr-fr-75.html\" target=\"_blank\" rel=\"noopener\">Girolle (Cantharellus cibarius)</a>",
+      "•\t<strong>Chanterelle jaunissante (Craterellus lutescens)</strong> : chapeau brunâtre, plis espacés et pâles, pied jaune vif.",
+      "<a href=\"https://www.francini-mycologie.fr/LA_PAGE_DU_DEBUTANT/Cantharellus_lutescens.html\" target=\"_blank\" rel=\"noopener\">Chanterelle jaunissante (Craterellus lutescens)</a>",
+      "•\t<strong>Chanterelle en tube (Craterellus tubaeformis)</strong> : chapeau brun, creusé en entonnoir, plis grisâtres et pied souvent jaune.",
+      "<a href=\"https://gmbvs.fr/mycologie/chronique-du-cueilleur-de-champignons/article/chanterelle-en-tube?lang=fr\" target=\"_blank\" rel=\"noopener\">Chanterelle en tube (Craterellus tubaeformis)</a>",
+      "Trompette des morts (Craterellus cornucopioides) : champignon gris noir à noir, en forme d’entonnoir profond, creux jusqu’à la base. Le bord du chapeau est mince et ondulé ; le dessous est presque lisse ou légèrement ridé, sans vraies lames. Le pied, creux et dans le prolongement du chapeau, est également sombre. Elle pousse souvent en groupes, dans les bois de feuillus.",
+      "<a href=\"https://francini-mycologie.fr/LA_PAGE_DU_DEBUTANT/Craterellus_cornucopioides.html\" target=\"_blank\" rel=\"noopener\">Trompette des morts (Craterellus cornucopioides)</a>",
+      "Ces caractères orientent l’identification, mais ne garantissent pas à eux seuls l’espèce ni la comestibilité : les exemplaires seront déterminés avant consommation."
+    ],
+    "photos": []
   }
 };
